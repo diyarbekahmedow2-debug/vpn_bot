@@ -135,3 +135,22 @@
     </script>
 </body>
 </html>
+
+<script>
+  // Гамбургер-меню для телефонов
+  document.addEventListener("DOMContentLoaded", function() {
+    var navbarBurgers = document.querySelectorAll(".navbar-burger");
+    
+    navbarBurgers.forEach(function(burger) {
+      burger.addEventListener("click", function() {
+        var targetId = burger.dataset.target;
+        var targetMenu = document.getElementById(targetId);
+        
+        burger.classList.toggle("is-active");
+        if (targetMenu) {
+          targetMenu.classList.toggle("is-active");
+        }
+      });
+    });
+  });
+</script>

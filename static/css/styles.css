@@ -1,0 +1,69 @@
+
+/* ===== МОБИЛЬНАЯ ВЕРСИЯ ДЛЯ ТЕЛЕФОНОВ ===== */
+
+/* Планшеты и телефоны (меньше 1024px) */
+@media (max-width: 1023px) {
+  .navbar-menu {
+    display: none !important;
+  }
+  
+  .navbar-menu.is-active {
+    display: block !important;
+  }
+  
+  .navbar-item {
+    text-align: center;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+/* Телефоны (меньше 768px) */
+@media (max-width: 767px) {
+  .title {
+    font-size: 1.5rem !important;
+  }
+  
+  .subtitle {
+    font-size: 1rem !important;
+  }
+  
+  .button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .buttons {
+    flex-direction: column;
+  }
+  
+  .column {
+    padding: 0.5rem !important;
+  }
+}
+
+/* Маленькие телефоны (меньше 480px) */
+@media (max-width: 479px) {
+  .section {
+    padding: 1rem 0.5rem;
+  }
+  
+  h1 {
+    font-size: 1.5rem !important;
+  }
+  
+  h2 {
+    font-size: 1.2rem !important;
+  }
+}
+
+/* Фикс для iOS */
+@supports (-webkit-touch-callout: none) {
+  .navbar-menu {
+    -webkit-overflow-scrolling: touch;
+  }
+}
