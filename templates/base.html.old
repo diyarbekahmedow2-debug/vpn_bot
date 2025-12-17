@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Secure VPN — Безопасный интернет без границ{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+    <style>
+        /* Простые и надежные стили для гамбургера */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            width: 30px;
+            height: 24px;
+            position: relative;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: #4f46e5;
+            position: absolute;
+            left: 0;
+            transition: 0.3s;
+        }
+        
+        .menu-toggle span:nth-child(1) { top: 0; }
+        .menu-toggle span:nth-child(2) { top: 10px; }
+        .menu-toggle span:nth-child(3) { top: 20px; }
+        
+        /* Анимация гамбургера в крестик */
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg);
+            top: 10px;
+        }
+        
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg);
+            top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="container header__container">
+            <a href="/" class="logo">🚀 Secure VPN</a>
+            
+            <!-- Гамбургер-иконка -->
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <!-- Навигация -->
+            <nav class="nav" id="mainNav">
+                <a href="/" class="nav__link">Главная</a>
+                <a href="/privacy" class="nav__link">Конфиденциальность</a>
+                <a href="/terms" class="nav__link">Соглашение</a>
+                <a href="https://t.me/sequrevpnbot" class="button button--primary" target="_blank">Начать в боте</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="main">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 <strong>Secure VPN</strong>. Все права защищены.</p>
+            <p>Используя сервис, вы соглашаетесь с <a href="/terms">Пользовательским соглашением</a> и <a href="/privacy">Политикой конфиденциальности</a>.</p>
+            <p>Поддержка: <a href="https://t.me/ваш_контакт" target="_blank">@ваш_контакт</a></p>
+        </div>
+    </footer>
+
+    <!-- Простой и надежный JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            // Функция переключения меню
+            function toggleMenu() {
+                menuToggle.classList.toggle('active');
+                mainNav.classList.toggle('active');
+                document.body.classList.toggle('menu-open');
+            }
+            
+            // Обработчик клика на гамбургер
+            menuToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleMenu();
+            });
+            
+            // Закрыть меню при клике на ссылку
+            document.querySelectorAll('.nav__link').forEach(link => {
+                link.addEventListener('click', () => {
+                    menuToggle.classList.remove('active');
+                    mainNav.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                });
+            });
+            
+            // Закрыть меню при клике вне его
+            document.addEventListener('click', function(e) {
+                if (!mainNav.contains(e.target) && !menuToggle.contains(e.target)) {
+                    menuToggle.classList.remove('active');
+                    mainNav.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                }
+            });
+            
+            // Закрыть меню при изменении размера окна
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    menuToggle.classList.remove('active');
+                    mainNav.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

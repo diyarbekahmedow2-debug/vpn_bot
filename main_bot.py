@@ -339,13 +339,13 @@ async def show_help(callback: types.CallbackQuery):
 
 <b>Что делать после оплаты:</b>
 1. Нажмите кнопку "Получить VPN доступ"
-2. Сохраните конфигурационный файл
-3. Импортируйте его в VPN приложение
+2. Нажмите открыт ссылку
+3. Нажмите кнопку Подключить в Личним кабинете
 4. Наслаждайтесь свободным интернетом!
 
 <b>Техническая информация:</b>
 • Цена: {PRICE} руб. за {VPN_DURATION} дней
-• Поддержка: @ваш_техподдержка
+• Поддержка: @sequrevpn_help
 • Домен: {WEB_URL}
 """
     await callback.message.answer(help_text, parse_mode="HTML")
@@ -382,42 +382,148 @@ async def admin_panel(message: types.Message):
     if message.from_user.id != ADMIN_ID:
         await message.answer("⛔ У вас нет доступа к админ панели.")
         return
-    
+
     conn = get_db_connection()
     cursor = conn.cursor()
-    
+
+    # Базовая статистика для главного экрана
     cursor.execute("SELECT COUNT(*) as total_users FROM users")
     total_users = cursor.fetchone()['total_users']
     
     cursor.execute("SELECT COUNT(*) as total_payments FROM payments")
     total_payments = cursor.fetchone()['total_payments']
     
-    cursor.execute("SELECT SUM(amount) as total_income FROM payments WHERE status = 'success'")
-    total_income = cursor.fetchone()['total_income'] or 0
+    cursor.execute("SELECT SUM(amount) as revenue FROM payments WHERE status='success'")
+    revenue_result = cursor.fetchone()['revenue']
+    total_revenue = revenue_result if revenue_result else 0
+
+    conn.close()
+
+    admin_text = f"""
+<b>🛠️ Админ-панель</b>
+
+<b>📈 Краткая сводка:</b>
+• 👥 Всего пользователей: <b>{total_users}</b>
+• 💳 Всего транзакций: <b>{total_payments}</b>
+• 💰 Общая выручка: <b>{total_revenue} руб.</b>
+
+Используйте кнопки ниже для детальной информации.
+"""
+    # Клавиатура с кнопками для админа
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="📊 Детальная статистика", callback_data="admin_stats")],
+        [InlineKeyboardButton(text="👥 Список пользователей", callback_data="admin_users_1")], # Начинаем с 1 страницы
+        [InlineKeyboardButton(text="🔄 Обновить", callback_data="admin_refresh")]
+    ])
+
+    await message.answer(admin_text, reply_markup=keyboard)
+
+# --- Обработчики админ-меню ---
+@dp.callback_query(F.data == "admin_stats")
+async def send_admin_stats(callback: types.CallbackQuery):
+    """Отправляет детальную статистику только админу."""
+    if callback.from_user.id != ADMIN_ID:
+        await callback.answer("⛔ Доступ запрещен.", show_alert=True)
+        return
+
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    # Развернутая статистика
+    cursor.execute("SELECT COUNT(*) as total FROM users")
+    total_users = cursor.fetchone()['total']
+    
+    cursor.execute("SELECT COUNT(*) as active FROM users WHERE is_active = 1")
+    active_users = cursor.fetchone()['active']
+    
+    cursor.execute("SELECT COUNT(*) as total_orders FROM payments")
+    total_orders = cursor.fetchone()['total_orders']
+    
+    cursor.execute("SELECT COUNT(*) as success_orders FROM payments WHERE status='success'")
+    success_orders = cursor.fetchone()['success_orders']
+    
+    cursor.execute("SELECT COUNT(*) as pending_orders FROM payments WHERE status='pending'")
+    pending_orders = cursor.fetchone()['pending_orders']
+    
+    cursor.execute("SELECT SUM(amount) as revenue FROM payments WHERE status='success'")
+    revenue_result = cursor.fetchone()['revenue']
+    total_revenue = revenue_result if revenue_result else 0
+
+    conn.close()
+
+    stats_text = f"""
+<b>📊 Детальная статистика</b>
+
+<u>Пользователи:</u>
+• Всего: <b>{total_users}</b>
+• Активных: <b>{active_users}</b>
+
+<u>Финансы:</u>
+• Всего заказов: <b>{total_orders}</b>
+• Успешных: <b>{success_orders}</b>
+• Ожидают оплаты: <b>{pending_orders}</b>
+• Выручка: <b>{total_revenue} руб.</b>
+"""
+    await callback.message.edit_text(stats_text, parse_mode="HTML")
+    await callback.answer()
+
+
+@dp.callback_query(F.data.startswith("admin_users_"))
+async def send_users_list(callback: types.CallbackQuery):
+    """Отправляет список пользователей с пагинацией только админу."""
+    if callback.from_user.id != ADMIN_ID:
+        await callback.answer("⛔ Доступ запрещен.", show_alert=True)
+        return
+
+    page = int(callback.data.split("_")[2])  # Получаем номер страницы из callback_data
+    users_per_page = 10
+    offset = (page - 1) * users_per_page
+
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    # Получаем пользователей для текущей страницы
+    cursor.execute("SELECT telegram_id, username, first_name, is_active, created_at FROM users ORDER BY id DESC LIMIT ? OFFSET ?", (users_per_page, offset))
+    users = cursor.fetchall()
+    
+    # Считаем общее количество для пагинации
+    cursor.execute("SELECT COUNT(*) as count FROM users")
+    total_users = cursor.fetchone()['count']
     
     conn.close()
-    
-    admin_text = f"""
-<b>👑 Админ панель</b>
 
-📊 Статистика:
-• Всего пользователей: {total_users}
-• Всего платежей: {total_payments}
-• Общий доход: {total_income} руб.
+    if not users:
+        await callback.answer("Список пользователей пуст.", show_alert=True)
+        return
 
-⚙️ Команды:
-• /stats - детальная статистика
-• /users - список пользователей
-• /payments - список платежей
-"""
+    users_text = f"<b>👥 Список пользователей (Страница {page})</b>\n\n"
+    for user in users:
+        status = "🟢" if user['is_active'] else "⚪"
+        username = f"@{user['username']}" if user['username'] else "—"
+        users_text += f"{status} <code>{user['telegram_id']}</code> | {username} | {user['first_name'] or '—'}\n"
+
+    # Формируем клавиатуру пагинации
+    keyboard_buttons = []
+    if page > 1:
+        keyboard_buttons.append(InlineKeyboardButton(text="⬅️ Назад", callback_data=f"admin_users_{page-1}"))
+    if offset + users_per_page < total_users:
+        keyboard_buttons.append(InlineKeyboardButton(text="Вперёд ➡️", callback_data=f"admin_users_{page+1}"))
     
-    keyboard = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="📊 Статистика", callback_data="admin_stats")],
-        [InlineKeyboardButton(text="👥 Пользователи", callback_data="admin_users")],
-        [InlineKeyboardButton(text="💳 Платежи", callback_data="admin_payments")]
-    ])
-    
-    await message.answer(admin_text, reply_markup=keyboard, parse_mode="HTML")
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[keyboard_buttons]) if keyboard_buttons else None
+
+    await callback.message.edit_text(users_text, reply_markup=keyboard, parse_mode="HTML")
+    await callback.answer()
+
+
+@dp.callback_query(F.data == "admin_refresh")
+async def refresh_admin_panel(callback: types.CallbackQuery):
+    """Обновляет админ-панель."""
+    if callback.from_user.id != ADMIN_ID:
+        await callback.answer("⛔ Доступ запрещен.", show_alert=True)
+        return
+    # Просто повторно вызываем команду /admin
+    await admin_panel(callback.message)
+    await callback.answer()
 
 # ===== ЗАПУСК БОТА =====
 async def main():

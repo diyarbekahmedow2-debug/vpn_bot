@@ -273,18 +273,9 @@ async def vpn_config_page(token: str):
             </div>
             
             <div class="buttons">
-                <button onclick="downloadConfig()" class="btn btn-primary">
-                    ⬇️ Скачать конфиг (.ovpn)
-                </button>
-                
-                <a href="https://t.me/sequrevpnbot" class="btn" style="background: #f8f9fa; color: #333;">
-                    ↩️ Вернуться в бота
-                </a>
-            </div>
-            
-            <div style="margin-top: 30px; font-size: 14px; color: #777;">
-                <p>Домен: <strong>{WEB_URL}</strong></p>
-                <p>Токен: <code>{token}</code></p>
+                <button class="btn btn-primary"><a class="btn btn-primary"  href="happ://crypt3/i+Wn1zuWxiYY4Za/ZUKPFI8N2zXzwh4Ezp+NhLTrCFLsmHIpVJue0yM6Ig1eyoYjdnXNGydjvk44/pQN5/jcsikmPx60zSYI519Z2dzbvbG4pBAfwNZvBwSGcyYYqAEdN1uGET/ZzfVfoCpsvELuWfJSOBMYZjKVNgTMynRM1dT9YwDx2JieZxk7b2rI8eAye5BmzjKiUcWAoO7N2v/3oIcUq8I+m23hIqm1dw4bpqPbDerpEDexM+y/dxp925PAOlA38IO/akGiKk1GGAA2dsJPO3WKttFy7TROkJvy2hakPItv+7ZseJWKlqDhI9XuXeRQevIYPNloxahDLivVS+qqLpmTsx53gySO0pDpQ4m08PlUU/iQcZmvDg9eM4UM+FxCSi2t1OMbOfmbtoiolGdrUPUhngJ6iIrvQyZVDZCo631DXHvYol3vyyfBjgcGUR4Eu/WfLDwmwfM0XWrG1tt9JiZhOY3diPUYCRBmHBWE4DKSPT7aj4VL/bQtCBZQ0ege3w/qhHZCLDv8nTse62ga2n10YmUxu6OMFKPDxTMnECU/RDE0CVnYD8k0ILm+2BLUxhOfgfim6cL+z7MnrLYLMrVGOhhv8biYwU9aBMPwiX7sSrOhGYBRswqTMnBDl8+mHnlvu0Ao0I5yUXceYLxrSf+xJwERXxfKY3AWEkQ=">
+                    ПОДКЛЮЧИТЬ
+                </a></button>
             </div>
         </div>
         
