@@ -117,7 +117,7 @@ async def vpn_config_page(token: str):
                 <li>Платеж не был завершен</li>
                 <li>Срок действия истек</li>
             </ul>
-            <p>Вернитесь в бота: <a href="https://t.me/ваш_бот">@ваш_бот</a></p>
+            <p>Вернитесь в бота: <a href="https://t.me/sequrevpnbot">@sequrevpnbot</a></p>
         </body>
         </html>
         """)
@@ -249,7 +249,7 @@ async def vpn_config_page(token: str):
                     📱 Открыть в Happ VPN
                 </a>
                 
-                <a href="https://t.me/ваш_бот" class="btn" style="background: #f8f9fa; color: #333;">
+                <a href="https://t.me/sequrevpnbot" class="btn" style="background: #f8f9fa; color: #333;">
                     ↩️ Вернуться в бота
                 </a>
             </div>
@@ -323,12 +323,12 @@ MIIE... (приватный ключ)
 @app.get("/success")
 async def success_page():
     """Страница успешной оплаты"""
-    return RedirectResponse("https://t.me/ваш_бот?start=success")
+    return RedirectResponse("https://t.me/sequrevpnbot?start=success")
 
 @app.get("/fail")
 async def fail_page():
     """Страница неудачной оплаты"""
-    return RedirectResponse("https://t.me/ваш_бот?start=fail")
+    return RedirectResponse("https://t.me/sequrevpnbot?start=fail")
 
 @app.get("/")
 async def home_page():

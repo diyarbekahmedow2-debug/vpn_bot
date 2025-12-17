@@ -111,3 +111,223 @@
 2025-12-17 12:44:14,365 - aiogram.dispatcher - WARNING - Received SIGINT signal
 2025-12-17 12:44:14,371 - aiogram.dispatcher - INFO - Polling stopped for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
 2025-12-17 12:44:14,371 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-17 14:15:45,125 - __main__ - INFO - ✅ База данных инициализирована
+2025-12-17 14:15:45,128 - __main__ - INFO - ✅ База данных инициализирована
+2025-12-17 14:15:45,129 - __main__ - INFO - 🚀 Запуск VPN бота...
+2025-12-17 14:15:45,129 - __main__ - INFO - Цена: 100 руб.
+2025-12-17 14:15:45,130 - __main__ - INFO - Домен: https://secureprodaww.ru
+2025-12-17 14:15:45,130 - __main__ - INFO - Platega API: Настроен
+2025-12-17 14:15:45,221 - aiogram.dispatcher - INFO - Start polling
+2025-12-17 14:15:45,245 - aiogram.dispatcher - INFO - Run polling for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
+2025-12-17 14:16:00,485 - aiogram.event - INFO - Update id=340381011 is handled. Duration 99 ms by bot id=8588075878
+2025-12-17 14:16:04,723 - __main__ - INFO - Ответ от Platega (статус 200): {"paymentMethod":"SBPQR","transactionId":"50e044c4-900a-4cbc-b68f-dfc55a76cd33","redirect":"https://pay.platega.io?id=50e044c4-900a-4cbc-b68f-dfc55a76cd33&mh=dc78266f-4a4b-4875-aa31-0be238936913","return":"https://secureprodaww.ru/success","paymentDetails":"100.0 RUB","status":"PENDING","expiresIn":"00:29:29","merchantId":"dc78266f-4a4b-4875-aa31-0be238936913","usdtRate":84.5,"cryptoAmount":0}
+2025-12-17 14:16:04,724 - __main__ - INFO - ✅ Платеж создан. Ссылка: https://pay.platega.io?id=50e044c4-900a-4cbc-b68f-dfc55a76cd33&mh=dc78266f-4a4b-4875-aa31-0be238936913
+2025-12-17 14:16:04,885 - aiogram.event - INFO - Update id=340381012 is handled. Duration 691 ms by bot id=8588075878
+2025-12-17 14:16:48,335 - aiogram.event - INFO - Update id=340381013 is handled. Duration 92 ms by bot id=8588075878
+2025-12-17 14:17:00,955 - aiogram.event - INFO - Update id=340381014 is handled. Duration 28 ms by bot id=8588075878
+2025-12-17 14:18:14,196 - aiogram.event - INFO - Update id=340381015 is handled. Duration 46 ms by bot id=8588075878
+2025-12-17 14:18:17,085 - aiogram.event - INFO - Update id=340381016 is handled. Duration 124 ms by bot id=8588075878
+2025-12-17 14:25:26,894 - aiogram.event - INFO - Update id=340381017 is handled. Duration 34 ms by bot id=8588075878
+2025-12-17 14:25:29,403 - aiogram.event - INFO - Update id=340381018 is handled. Duration 42 ms by bot id=8588075878
+2025-12-17 14:25:58,310 - aiogram.event - INFO - Update id=340381019 is handled. Duration 25 ms by bot id=8588075878
+2025-12-17 14:36:46,611 - aiogram.event - INFO - Update id=340381020 is not handled. Duration 35 ms by bot id=8588075878
+2025-12-17 14:36:46,613 - aiogram.event - ERROR - Cause exception while process update id=340381020 by bot id=8588075878
+TelegramBadRequest: Telegram server says - Bad Request: inline keyboard button URL 'happvpn://config/abaa5018-d325-46e5-8237-87dddb76e5bf' is invalid: Unsupported URL protocol
+Traceback (most recent call last):
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 320, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 164, in feed_update
+    response = await self.update.wrap_outer_middleware(
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/error.py", line 27, in __call__
+    return await handler(event, data)
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 58, in __call__
+    return await handler(event, data)
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/fsm/middleware.py", line 43, in __call__
+    return await handler(event, data)
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 126, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 161, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 153, in _wrapped
+    return await self._propagate_event(
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 181, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 126, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+  File "/root/vpnbot/main_bot.py", line 317, in check_payment_status
+    await callback.message.answer(
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/methods/base.py", line 84, in emit
+    return await bot(self)
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/client/bot.py", line 485, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/client/session/base.py", line 259, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/client/session/aiohttp.py", line 177, in make_request
+    response = self.check_response(
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/client/session/base.py", line 121, in check_response
+    raise TelegramBadRequest(method=method, message=description)
+aiogram.exceptions.TelegramBadRequest: Telegram server says - Bad Request: inline keyboard button URL 'happvpn://config/abaa5018-d325-46e5-8237-87dddb76e5bf' is invalid: Unsupported URL protocol
+2025-12-17 14:37:03,180 - aiogram.event - INFO - Update id=340381021 is not handled. Duration 29 ms by bot id=8588075878
+2025-12-17 14:37:03,181 - aiogram.event - ERROR - Cause exception while process update id=340381021 by bot id=8588075878
+TelegramBadRequest: Telegram server says - Bad Request: inline keyboard button URL 'happvpn://config/abaa5018-d325-46e5-8237-87dddb76e5bf' is invalid: Unsupported URL protocol
+Traceback (most recent call last):
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 320, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 164, in feed_update
+    response = await self.update.wrap_outer_middleware(
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/error.py", line 27, in __call__
+    return await handler(event, data)
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 58, in __call__
+    return await handler(event, data)
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/fsm/middleware.py", line 43, in __call__
+    return await handler(event, data)
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 126, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 161, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 153, in _wrapped
+    return await self._propagate_event(
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 181, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 126, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+  File "/root/vpnbot/main_bot.py", line 317, in check_payment_status
+    await callback.message.answer(
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/methods/base.py", line 84, in emit
+    return await bot(self)
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/client/bot.py", line 485, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/client/session/base.py", line 259, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/client/session/aiohttp.py", line 177, in make_request
+    response = self.check_response(
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/client/session/base.py", line 121, in check_response
+    raise TelegramBadRequest(method=method, message=description)
+aiogram.exceptions.TelegramBadRequest: Telegram server says - Bad Request: inline keyboard button URL 'happvpn://config/abaa5018-d325-46e5-8237-87dddb76e5bf' is invalid: Unsupported URL protocol
+2025-12-17 14:37:20,081 - aiogram.event - INFO - Update id=340381022 is not handled. Duration 30 ms by bot id=8588075878
+2025-12-17 14:37:20,082 - aiogram.event - ERROR - Cause exception while process update id=340381022 by bot id=8588075878
+TelegramBadRequest: Telegram server says - Bad Request: inline keyboard button URL 'happvpn://config/abaa5018-d325-46e5-8237-87dddb76e5bf' is invalid: Unsupported URL protocol
+Traceback (most recent call last):
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 320, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 164, in feed_update
+    response = await self.update.wrap_outer_middleware(
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/error.py", line 27, in __call__
+    return await handler(event, data)
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 58, in __call__
+    return await handler(event, data)
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/fsm/middleware.py", line 43, in __call__
+    return await handler(event, data)
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 126, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 161, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 153, in _wrapped
+    return await self._propagate_event(
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/router.py", line 181, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/telegram.py", line 126, in trigger
+    return await wrapped_inner(event, kwargs)
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+  File "/root/vpnbot/main_bot.py", line 317, in check_payment_status
+    await callback.message.answer(
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/methods/base.py", line 84, in emit
+    return await bot(self)
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/client/bot.py", line 485, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/client/session/base.py", line 259, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/client/session/aiohttp.py", line 177, in make_request
+    response = self.check_response(
+  File "/root/vpnbot/venv/lib/python3.10/site-packages/aiogram/client/session/base.py", line 121, in check_response
+    raise TelegramBadRequest(method=method, message=description)
+aiogram.exceptions.TelegramBadRequest: Telegram server says - Bad Request: inline keyboard button URL 'happvpn://config/abaa5018-d325-46e5-8237-87dddb76e5bf' is invalid: Unsupported URL protocol
+2025-12-17 14:41:05,857 - aiogram.dispatcher - WARNING - Received SIGINT signal
+2025-12-17 14:41:05,860 - aiogram.dispatcher - INFO - Polling stopped for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
+2025-12-17 14:41:05,861 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-17 15:03:58,785 - __main__ - INFO - ✅ База данных инициализирована
+2025-12-17 15:03:58,789 - __main__ - INFO - ✅ База данных инициализирована
+2025-12-17 15:03:58,789 - __main__ - INFO - 🚀 Запуск VPN бота...
+2025-12-17 15:03:58,790 - __main__ - INFO - Цена: 100 руб.
+2025-12-17 15:03:58,790 - __main__ - INFO - Домен: https://secureprodaww.ru
+2025-12-17 15:03:58,790 - __main__ - INFO - Platega API: Настроен
+2025-12-17 15:03:58,862 - aiogram.dispatcher - INFO - Start polling
+2025-12-17 15:03:58,881 - aiogram.dispatcher - INFO - Run polling for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
+2025-12-17 15:04:50,870 - aiogram.event - INFO - Update id=340381023 is handled. Duration 153 ms by bot id=8588075878
+2025-12-17 15:04:57,038 - aiogram.event - INFO - Update id=340381024 is handled. Duration 169 ms by bot id=8588075878
+2025-12-17 15:08:29,797 - aiogram.dispatcher - WARNING - Received SIGINT signal
+2025-12-17 15:08:29,800 - aiogram.dispatcher - INFO - Polling stopped for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
+2025-12-17 15:08:29,801 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-17 15:39:43,523 - __main__ - INFO - ✅ База данных инициализирована
+2025-12-17 15:39:43,529 - __main__ - INFO - ✅ База данных инициализирована
+2025-12-17 15:39:43,529 - __main__ - INFO - 🚀 Запуск VPN бота...
+2025-12-17 15:39:43,530 - __main__ - INFO - Цена: 100 руб.
+2025-12-17 15:39:43,530 - __main__ - INFO - Домен: https://secureprodaww.ru
+2025-12-17 15:39:43,531 - __main__ - INFO - Platega API: Настроен
+2025-12-17 15:39:43,615 - aiogram.dispatcher - INFO - Start polling
+2025-12-17 15:39:43,641 - aiogram.dispatcher - INFO - Run polling for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
+2025-12-17 15:39:49,672 - aiogram.event - INFO - Update id=340381027 is handled. Duration 125 ms by bot id=8588075878
+2025-12-17 15:44:10,540 - __main__ - INFO - Ответ от Platega (статус 200): {"paymentMethod":"SBPQR","transactionId":"763b4d10-838e-4214-a837-4addc57d102e","redirect":"https://pay.platega.io?id=763b4d10-838e-4214-a837-4addc57d102e&mh=dc78266f-4a4b-4875-aa31-0be238936913","return":"https://secureprodaww.ru/success","paymentDetails":"100.0 RUB","status":"PENDING","expiresIn":"00:29:29","merchantId":"dc78266f-4a4b-4875-aa31-0be238936913","usdtRate":84.5,"cryptoAmount":0}
+2025-12-17 15:44:10,542 - __main__ - INFO - ✅ Платеж создан. Ссылка: https://pay.platega.io?id=763b4d10-838e-4214-a837-4addc57d102e&mh=dc78266f-4a4b-4875-aa31-0be238936913
+2025-12-17 15:44:10,612 - aiogram.event - INFO - Update id=340381028 is handled. Duration 1162 ms by bot id=8588075878
+2025-12-17 15:45:21,099 - aiogram.event - INFO - Update id=340381029 is handled. Duration 38 ms by bot id=8588075878
+2025-12-17 15:49:13,347 - aiogram.dispatcher - WARNING - Received SIGINT signal
+2025-12-17 15:49:13,349 - aiogram.dispatcher - INFO - Polling stopped for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
+2025-12-17 15:49:13,349 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-17 15:49:40,873 - __main__ - INFO - ✅ База данных инициализирована
+2025-12-17 15:49:40,876 - __main__ - INFO - ✅ База данных инициализирована
+2025-12-17 15:49:40,876 - __main__ - INFO - 🚀 Запуск VPN бота...
+2025-12-17 15:49:40,877 - __main__ - INFO - Цена: 10 руб.
+2025-12-17 15:49:40,878 - __main__ - INFO - Домен: https://secureprodaww.ru
+2025-12-17 15:49:40,878 - __main__ - INFO - Platega API: Настроен
+2025-12-17 15:49:40,952 - aiogram.dispatcher - INFO - Start polling
+2025-12-17 15:49:40,968 - aiogram.dispatcher - INFO - Run polling for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
+2025-12-17 15:49:55,559 - aiogram.event - INFO - Update id=340381030 is handled. Duration 113 ms by bot id=8588075878
+2025-12-17 15:50:13,365 - __main__ - INFO - Ответ от Platega (статус 200): {"paymentMethod":"SBPQR","transactionId":"95d86783-70c5-4a42-b6e0-1395e98dfb87","redirect":"https://pay.platega.io?id=95d86783-70c5-4a42-b6e0-1395e98dfb87&mh=dc78266f-4a4b-4875-aa31-0be238936913","return":"https://secureprodaww.ru/success","paymentDetails":"10.0 RUB","status":"PENDING","expiresIn":"00:29:29","merchantId":"dc78266f-4a4b-4875-aa31-0be238936913","usdtRate":84.5,"cryptoAmount":0}
+2025-12-17 15:50:13,366 - __main__ - INFO - ✅ Платеж создан. Ссылка: https://pay.platega.io?id=95d86783-70c5-4a42-b6e0-1395e98dfb87&mh=dc78266f-4a4b-4875-aa31-0be238936913
+2025-12-17 15:50:13,434 - aiogram.event - INFO - Update id=340381031 is handled. Duration 947 ms by bot id=8588075878
+2025-12-17 15:50:48,757 - aiogram.event - INFO - Update id=340381032 is handled. Duration 30 ms by bot id=8588075878
+2025-12-17 15:50:52,496 - aiogram.event - INFO - Update id=340381033 is handled. Duration 54 ms by bot id=8588075878
+2025-12-17 15:50:58,582 - aiogram.event - INFO - Update id=340381034 is handled. Duration 38 ms by bot id=8588075878
+2025-12-17 15:51:00,549 - aiogram.event - INFO - Update id=340381035 is handled. Duration 32 ms by bot id=8588075878
+2025-12-17 15:51:58,673 - aiogram.event - INFO - Update id=340381036 is handled. Duration 88 ms by bot id=8588075878
+2025-12-17 15:56:44,610 - aiogram.dispatcher - WARNING - Received SIGINT signal
+2025-12-17 15:56:44,612 - aiogram.dispatcher - INFO - Polling stopped for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
+2025-12-17 15:56:44,613 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-17 15:58:15,411 - __main__ - INFO - ✅ База данных инициализирована
+2025-12-17 15:58:15,416 - __main__ - INFO - ✅ База данных инициализирована
+2025-12-17 15:58:15,416 - __main__ - INFO - 🚀 Запуск VPN бота...
+2025-12-17 15:58:15,417 - __main__ - INFO - Цена: 10 руб.
+2025-12-17 15:58:15,417 - __main__ - INFO - Домен: https://secureprodaww.ru
+2025-12-17 15:58:15,417 - __main__ - INFO - Platega API: Настроен
+2025-12-17 15:58:15,485 - aiogram.dispatcher - INFO - Start polling
+2025-12-17 15:58:15,507 - aiogram.dispatcher - INFO - Run polling for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
+2025-12-17 16:00:57,890 - aiogram.event - INFO - Update id=340381037 is handled. Duration 180 ms by bot id=8588075878
+2025-12-17 16:00:59,984 - aiogram.event - INFO - Update id=340381038 is handled. Duration 96 ms by bot id=8588075878
+2025-12-17 16:01:07,090 - aiogram.event - INFO - Update id=340381039 is handled. Duration 272 ms by bot id=8588075878
+2025-12-17 16:01:31,846 - __main__ - INFO - Ответ от Platega (статус 200): {"paymentMethod":"SBPQR","transactionId":"d6fa812d-3e8a-49af-b354-ff5ef85cc6d7","redirect":"https://pay.platega.io?id=d6fa812d-3e8a-49af-b354-ff5ef85cc6d7&mh=dc78266f-4a4b-4875-aa31-0be238936913","return":"https://secureprodaww.ru/success","paymentDetails":"10.0 RUB","status":"PENDING","expiresIn":"00:29:29","merchantId":"dc78266f-4a4b-4875-aa31-0be238936913","usdtRate":84.5,"cryptoAmount":0}
+2025-12-17 16:01:31,848 - __main__ - INFO - ✅ Платеж создан. Ссылка: https://pay.platega.io?id=d6fa812d-3e8a-49af-b354-ff5ef85cc6d7&mh=dc78266f-4a4b-4875-aa31-0be238936913
+2025-12-17 16:01:31,936 - aiogram.event - INFO - Update id=340381040 is handled. Duration 1213 ms by bot id=8588075878
+2025-12-17 16:02:05,847 - aiogram.event - INFO - Update id=340381041 is handled. Duration 108 ms by bot id=8588075878
+2025-12-17 16:02:18,331 - aiogram.event - INFO - Update id=340381042 is handled. Duration 26 ms by bot id=8588075878
+2025-12-17 16:02:28,180 - aiogram.event - INFO - Update id=340381043 is handled. Duration 83 ms by bot id=8588075878
+2025-12-17 16:03:37,476 - aiogram.event - INFO - Update id=340381044 is not handled. Duration 1 ms by bot id=8588075878
+2025-12-17 16:03:55,595 - aiogram.event - INFO - Update id=340381045 is not handled. Duration 0 ms by bot id=8588075878
+2025-12-17 16:06:38,996 - aiogram.event - INFO - Update id=340381046 is handled. Duration 57 ms by bot id=8588075878

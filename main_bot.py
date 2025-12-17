@@ -10,7 +10,7 @@ import logging
 import sqlite3
 import uuid
 import json
-from datetime import datetime, timedelta
+from datetime import datetime
 from typing import Optional
 
 from aiogram import Bot, Dispatcher, types, F
@@ -30,6 +30,7 @@ BOT_TOKEN = os.getenv('BOT_TOKEN', '')
 ADMIN_ID = int(os.getenv('ADMIN_ID', '0'))
 PRICE = int(os.getenv('PRICE', '100'))
 PLATEGA_API_KEY = os.getenv('PLATEGA_API_KEY', '')
+PLATEGA_MERCHANT_ID = os.getenv('PLATEGA_MERCHANT_ID', '')
 WEB_URL = os.getenv('WEB_URL', 'https://secureprodaww.ru')
 VPN_DURATION = int(os.getenv('VPN_DURATION', '30'))
 
@@ -86,7 +87,8 @@ def init_database():
             vpn_token TEXT UNIQUE,
             payment_method TEXT DEFAULT 'SBP_QR',
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            completed_at TIMESTAMP
+            completed_at TIMESTAMP,
+            platega_order_id TEXT
         )
     ''')
     
@@ -103,12 +105,12 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row
     return conn
 
-# ===== PLATEGA API (ИСПРАВЛЕННАЯ ВЕРСИЯ по документации) =====
+# ===== PLATEGA API (ИСПРАВЛЕННАЯ ВЕРСИЯ) =====
 class PlategaAPI:
     def __init__(self):
-        self.api_key = os.getenv('PLATEGA_API_KEY', '')
-        self.merchant_id = os.getenv('PLATEGA_MERCHANT_ID', '')
-        self.base_url = "https://app.platega.io"  # Базовый URL
+        self.api_key = PLATEGA_API_KEY
+        self.merchant_id = PLATEGA_MERCHANT_ID
+        self.base_url = "https://app.platega.io"
         self.headers = {
             "X-MerchantId": self.merchant_id,
             "X-Secret": self.api_key,
@@ -120,19 +122,18 @@ class PlategaAPI:
 
     async def create_payment(self, amount: int, order_id: str, description: str) -> Optional[str]:
         """Создает платеж в Platega и возвращает ссылку для оплаты."""
-        url = f"{self.base_url}/transaction/process"  # ПРАВИЛЬНЫЙ endpoint
+        url = f"{self.base_url}/transaction/process"
 
-        # ТЕЛО ЗАПРОСА ПО ДОКУМЕНТАЦИИ (СБП QR)
         data = {
-            "paymentMethod": 2,  # 2 = СБП QR (ваш метод)
+            "paymentMethod": 2,  # 2 = СБП QR
             "paymentDetails": {
                 "amount": float(amount),
                 "currency": "RUB"
             },
             "description": description,
-            "return": f"{WEB_URL}/success",  # Куда перейти после успеха
-            "failedUrl": f"{WEB_URL}/fail",  # Куда перейти после неудачи
-            "payload": order_id  # Наш внутренний ID
+            "return": f"{WEB_URL}/success",
+            "failedUrl": f"{WEB_URL}/fail",
+            "payload": order_id
         }
 
         try:
@@ -143,7 +144,6 @@ class PlategaAPI:
                     
                     if response.status == 200:
                         result = json.loads(result_text)
-                        # Из документации: ссылка для оплаты в поле "redirect"
                         payment_url = result.get('redirect')
                         if payment_url:
                             logger.info(f"✅ Платеж создан. Ссылка: {payment_url}")
@@ -153,62 +153,31 @@ class PlategaAPI:
                     else:
                         logger.error(f"❌ Ошибка API Platega. Статус: {response.status}")
                         logger.error(f"Тело ответа: {result_text}")
-        except Exception as e:
-            logger.error(f"❌ Ошибка сети при создании платежа: {e}")
-        return None        
-        url = f"{self.base_url}/api/transactions/process"
-        
-        data = {
-            "paymentMethod": 2,  # 2 = СБП QR
-            "paymentDetails": {
-                "amount": float(amount),
-                "currency": "RUB"
-            },
-            "description": description,
-            "payload": order_id,  # Наш внутренний ID для callback
-            "return": f"{WEB_URL}/success",
-            "failedUrl": f"{WEB_URL}/fail"
-        }
-        
-        try:
-            async with aiohttp.ClientSession() as session:
-                async with session.post(url, json=data, headers=self.headers, timeout=30) as response:
-                    if response.status == 201:
-                        result = await response.json()
-                        payment_url = result.get('redirect')
-                        if payment_url:
-                            logger.info(f"✅ Платеж создан: {order_id}")
-                            return payment_url
-                        else:
-                            logger.error(f"❌ Нет ссылки в ответе Platega: {result}")
-                    else:
-                        logger.error(f"❌ Ошибка API Platega. Статус: {response.status}")
-                        logger.error(f"Ответ: {await response.text()}")
+        except aiohttp.ClientConnectorError as e:
+            logger.error(f"❌ Ошибка сети: {e}")
         except Exception as e:
             logger.error(f"❌ Ошибка создания платежа: {e}")
-        
+        return None
+
+    async def check_payment_status(self, transaction_id: str):
+        """Проверяет статус платежа в Platega по transactionId."""
+        url = f"{self.base_url}/transaction/{transaction_id}"
+
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.get(url, headers=self.headers, timeout=10) as response:
+                    if response.status == 200:
+                        result = await response.json()
+                        logger.info(f"Статус транзакции {transaction_id}: {result.get('status')}")
+                        return result
+                    else:
+                        logger.error(f"Ошибка при проверке статуса. Код: {response.status}")
+                        logger.error(await response.text())
+        except Exception as e:
+            logger.error(f"Ошибка сети при проверке статуса: {e}")
         return None
 
 platega = PlategaAPI()
-
-
-        async def check_payment_status(self, transaction_id: str):
-            """Проверяет статус платежа в Platega по transactionId."""
-            url = f"{self.base_url}/transaction/{transaction_id}"
-
-            try:
-                async with aiohttp.ClientSession() as session:
-                    async with session.get(url, headers=self.headers, timeout=10) as response:
-                        if response.status == 200:
-                            result = await response.json()
-                            logger.info(f"Статус транзакции {transaction_id}: {result.get('status')}")
-                            return result
-                        else:
-                            logger.error(f"Ошибка при проверке статуса. Код: {response.status}")
-                            logger.error(await response.text())
-            except Exception as e:
-                logger.error(f"Ошибка сети при проверке статуса: {e}")
-            return None
 
 # ===== ОБРАБОТЧИКИ КОМАНД =====
 @dp.message(Command("start"))
@@ -340,9 +309,7 @@ async def check_payment_status(callback: types.CallbackQuery):
         vpn_url = f"{WEB_URL}/vpn/{vpn_token}"
         
         keyboard = InlineKeyboardMarkup(inline_keyboard=[
-            [InlineKeyboardButton(text="🚀 Получить VPN доступ", url=vpn_url)],
-            [InlineKeyboardButton(text="📱 Открыть в приложении", 
-                                 url=f"happvpn://config/{vpn_token}")]
+            [InlineKeyboardButton(text="🚀 Получить VPN доступ", url=vpn_url)]
         ])
         
         await callback.message.answer(
@@ -377,93 +344,99 @@ async def show_help(callback: types.CallbackQuery):
 4. Наслаждайтесь свободным интернетом!
 
 <b>Техническая информация:</b>
-• Цена: {PRICE} руб. / {VPN_DURATION} дней
-• Метод оплаты: СБП QR-код
+• Цена: {PRICE} руб. за {VPN_DURATION} дней
+• Поддержка: @ваш_техподдержка
 • Домен: {WEB_URL}
-
-<b>Если возникли проблемы:</b>
-1. Попробуйте команду /start
-2. Проверьте статус платежа
-3. Напишите в поддержку
-    """
-    
-    await callback.message.answer(help_text)
+"""
+    await callback.message.answer(help_text, parse_mode="HTML")
     await callback.answer()
 
 @dp.callback_query(F.data == "status")
 async def show_status(callback: types.CallbackQuery):
-    """Показать статус системы"""
-    import socket
+    """Показать статус пользователя"""
+    user = callback.from_user
     
-    hostname = socket.gethostname()
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute(
+        "SELECT COUNT(*) as total_payments, SUM(CASE WHEN status = 'success' THEN 1 ELSE 0 END) as successful_payments FROM payments WHERE telegram_id = ?",
+        (user.id,)
+    )
+    stats = cursor.fetchone()
+    conn.close()
     
     status_text = f"""
-<b>📊 Статус системы</b>
+<b>📊 Ваш статус</b>
 
-• Сервер: <code>{hostname}</code>
-• IP: <code>5.61.33.66</code>
-• Домен: {WEB_URL}
-• Бот: 🟢 Работает
-• База данных: 🟢 Активна
-• Platega: {'🟢 Настроен' if PLATEGA_API_KEY else '🔴 Не настроен'}
-• Цена: {PRICE} руб.
-
-<b>Для начала работы нажмите:</b> /start
-    """
-    
-    await callback.message.answer(status_text)
+👤 Пользователь: {user.first_name or 'N/A'}
+🆔 ID: {user.id}
+📅 Активных подписок: {stats['successful_payments'] if stats else 0}
+💰 Всего платежей: {stats['total_payments'] if stats else 0}
+"""
+    await callback.message.answer(status_text, parse_mode="HTML")
     await callback.answer()
 
 @dp.message(Command("admin"))
 async def admin_panel(message: types.Message):
-    """Панель администратора"""
+    """Админ панель"""
     if message.from_user.id != ADMIN_ID:
-        await message.answer("❌ Доступ запрещен")
+        await message.answer("⛔ У вас нет доступа к админ панели.")
         return
     
     conn = get_db_connection()
     cursor = conn.cursor()
     
-    # Статистика
-    cursor.execute("SELECT COUNT(*) FROM users")
-    total_users = cursor.fetchone()[0]
+    cursor.execute("SELECT COUNT(*) as total_users FROM users")
+    total_users = cursor.fetchone()['total_users']
     
-    cursor.execute("SELECT COUNT(*) FROM payments")
-    total_payments = cursor.fetchone()[0]
+    cursor.execute("SELECT COUNT(*) as total_payments FROM payments")
+    total_payments = cursor.fetchone()['total_payments']
     
-    cursor.execute("SELECT COUNT(*) FROM payments WHERE status = 'success'")
-    successful_payments = cursor.fetchone()[0]
+    cursor.execute("SELECT SUM(amount) as total_income FROM payments WHERE status = 'success'")
+    total_income = cursor.fetchone()['total_income'] or 0
     
     conn.close()
     
     admin_text = f"""
-<b>👑 Панель администратора</b>
+<b>👑 Админ панель</b>
 
-<b>Статистика:</b>
-• Пользователей: {total_users}
+📊 Статистика:
+• Всего пользователей: {total_users}
 • Всего платежей: {total_payments}
-• Успешных платежей: {successful_payments}
-• Доход: {successful_payments * PRICE} руб.
+• Общий доход: {total_income} руб.
 
-<b>Действия:</b>
-• /start - перезапустить бота
-• /admin - эта панель
-    """
+⚙️ Команды:
+• /stats - детальная статистика
+• /users - список пользователей
+• /payments - список платежей
+"""
     
-    await message.answer(admin_text)
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="📊 Статистика", callback_data="admin_stats")],
+        [InlineKeyboardButton(text="👥 Пользователи", callback_data="admin_users")],
+        [InlineKeyboardButton(text="💳 Платежи", callback_data="admin_payments")]
+    ])
+    
+    await message.answer(admin_text, reply_markup=keyboard, parse_mode="HTML")
 
 # ===== ЗАПУСК БОТА =====
 async def main():
-    """Основная функция запуска"""
+    """Основная функция запуска бота"""
+    logger.info("✅ База данных инициализирована")
     logger.info("🚀 Запуск VPN бота...")
     logger.info(f"Цена: {PRICE} руб.")
     logger.info(f"Домен: {WEB_URL}")
-    logger.info(f"Platega API: {'Настроен' if PLATEGA_API_KEY else 'Не настроен'}")
     
-    try:
-        await dp.start_polling(bot)
-    except Exception as e:
-        logger.error(f"❌ Ошибка запуска бота: {e}")
+    if PLATEGA_API_KEY and PLATEGA_MERCHANT_ID:
+        logger.info("Platega API: Настроен")
+    else:
+        logger.warning("Platega API: Не настроен! Платежи работать не будут")
+    
+    # Очистка кэша
+    await bot.delete_webhook(drop_pending_updates=True)
+    
+    # Запуск бота
+    await dp.start_polling(bot)
 
 if __name__ == "__main__":
     asyncio.run(main())
