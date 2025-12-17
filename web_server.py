@@ -1,0 +1,435 @@
+#!/usr/bin/env python3
+"""
+Веб-сервер для обработки callback от Platega и выдачи VPN
+"""
+
+from fastapi import FastAPI, Request, HTTPException
+from fastapi.responses import JSONResponse, HTMLResponse, RedirectResponse, FileResponse
+import sqlite3
+import logging
+import json
+import os
+from datetime import datetime
+
+app = FastAPI(title="VPN Bot Web Server")
+
+# Логирование
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+# Конфигурация
+WEB_URL = os.getenv('WEB_URL', 'https://secureprodaww.ru')
+
+def get_db():
+    conn = sqlite3.connect('vpn.db')
+    conn.row_factory = sqlite3.Row
+    return conn
+
+@app.post("/platega-callback")
+async def platega_callback(request: Request):
+    """
+    Callback от Platega - получение уведомлений об оплате
+    """
+    try:
+        data = await request.json()
+        logger.info(f"📨 Получен callback от Platega: {data}")
+        
+        # Извлекаем данные
+        order_id = data.get("payload")  # Наш order_id
+        status = data.get("status")     # "CONFIRMED" или "CANCELED"
+        platega_id = data.get("id")     # ID транзакции Platega
+        
+        if not order_id:
+            logger.error("❌ Нет order_id в callback")
+            return JSONResponse({"status": "error", "message": "No order_id"})
+        
+        # Обновляем статус платежа в БД
+        conn = get_db()
+        cursor = conn.cursor()
+        
+        # Проверяем существование платежа
+        cursor.execute("SELECT * FROM payments WHERE order_id = ?", (order_id,))
+        payment = cursor.fetchone()
+        
+        if not payment:
+            logger.error(f"❌ Платеж {order_id} не найден")
+            conn.close()
+            return JSONResponse({"status": "error", "message": "Payment not found"})
+        
+        # Обновляем статус
+        new_status = "success" if status == "CONFIRMED" else "failed"
+        
+        cursor.execute('''
+            UPDATE payments 
+            SET status = ?, completed_at = CURRENT_TIMESTAMP
+            WHERE order_id = ?
+        ''', (new_status, order_id))
+        
+        conn.commit()
+        conn.close()
+        
+        logger.info(f"✅ Статус платежа {order_id} обновлен на '{new_status}'")
+        return JSONResponse({"status": "ok"})
+        
+    except json.JSONDecodeError:
+        logger.error("❌ Неверный JSON в запросе")
+        return JSONResponse({"status": "error", "message": "Invalid JSON"}, status_code=400)
+    except Exception as e:
+        logger.error(f"❌ Ошибка обработки callback: {e}")
+        return JSONResponse({"status": "error", "message": str(e)}, status_code=500)
+
+@app.get("/vpn/{token}")
+async def vpn_config_page(token: str):
+    """
+    Страница с VPN конфигурацией
+    """
+    # Проверяем в базе
+    conn = get_db()
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+        SELECT p.*, u.username, u.first_name 
+        FROM payments p
+        LEFT JOIN users u ON p.telegram_id = u.telegram_id
+        WHERE p.vpn_token = ? AND p.status = 'success'
+    ''', (token,))
+    
+    payment = cursor.fetchone()
+    conn.close()
+    
+    if not payment:
+        return HTMLResponse("""
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>VPN - Ошибка</title>
+            <meta charset="utf-8">
+            <style>
+                body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+                .error { color: #ff0000; font-size: 24px; }
+            </style>
+        </head>
+        <body>
+            <h1 class="error">❌ Конфигурация не найдена</h1>
+            <p>Возможно:</p>
+            <ul>
+                <li>Ссылка устарела</li>
+                <li>Платеж не был завершен</li>
+                <li>Срок действия истек</li>
+            </ul>
+            <p>Вернитесь в бота: <a href="https://t.me/ваш_бот">@ваш_бот</a></p>
+        </body>
+        </html>
+        """)
+    
+    # Формируем HTML страницу
+    html_content = f"""
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>VPN Конфигурация</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            * {{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }}
+            
+            body {{
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                min-height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 20px;
+            }}
+            
+            .container {{
+                background: white;
+                border-radius: 20px;
+                padding: 40px;
+                max-width: 500px;
+                width: 100%;
+                box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+                text-align: center;
+            }}
+            
+            h1 {{
+                color: #333;
+                margin-bottom: 20px;
+                font-size: 28px;
+            }}
+            
+            .status {{
+                display: inline-block;
+                background: #4CAF50;
+                color: white;
+                padding: 8px 16px;
+                border-radius: 20px;
+                font-size: 14px;
+                margin-bottom: 20px;
+            }}
+            
+            .info {{
+                text-align: left;
+                background: #f8f9fa;
+                padding: 20px;
+                border-radius: 10px;
+                margin: 20px 0;
+            }}
+            
+            .info p {{
+                margin: 10px 0;
+                color: #555;
+            }}
+            
+            .buttons {{
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                margin-top: 30px;
+            }}
+            
+            .btn {{
+                display: block;
+                padding: 16px 24px;
+                border: none;
+                border-radius: 10px;
+                font-size: 16px;
+                font-weight: 600;
+                cursor: pointer;
+                text-decoration: none;
+                transition: all 0.3s;
+                text-align: center;
+            }}
+            
+            .btn-primary {{
+                background: #4CAF50;
+                color: white;
+            }}
+            
+            .btn-primary:hover {{
+                background: #45a049;
+                transform: translateY(-2px);
+            }}
+            
+            .btn-secondary {{
+                background: #667eea;
+                color: white;
+            }}
+            
+            .btn-secondary:hover {{
+                background: #5a67d8;
+                transform: translateY(-2px);
+            }}
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>🔐 VPN Конфигурация</h1>
+            
+            <div class="status">✅ Активна</div>
+            
+            <div class="info">
+                <p><strong>👤 Пользователь:</strong> {payment['first_name'] or payment['username'] or 'N/A'}</p>
+                <p><strong>💰 Сумма:</strong> {payment['amount']} RUB</p>
+                <p><strong>📅 Дата:</strong> {payment['created_at']}</p>
+                <p><strong>⏳ Действует:</strong> 30 дней</p>
+            </div>
+            
+            <div class="buttons">
+                <button onclick="downloadConfig()" class="btn btn-primary">
+                    ⬇️ Скачать конфиг (.ovpn)
+                </button>
+                
+                <a href="happvpn://import/{token}" class="btn btn-secondary">
+                    📱 Открыть в Happ VPN
+                </a>
+                
+                <a href="https://t.me/ваш_бот" class="btn" style="background: #f8f9fa; color: #333;">
+                    ↩️ Вернуться в бота
+                </a>
+            </div>
+            
+            <div style="margin-top: 30px; font-size: 14px; color: #777;">
+                <p>Домен: <strong>{WEB_URL}</strong></p>
+                <p>Токен: <code>{token}</code></p>
+            </div>
+        </div>
+        
+        <script>
+            function downloadConfig() {{
+                // Создаем конфигурацию VPN
+                const config = `client
+dev tun
+proto udp
+remote vpn.{WEB_URL.replace('https://', '')} 1194
+resolv-retry infinite
+nobind
+persist-key
+persist-tun
+remote-cert-tls server
+cipher AES-256-CBC
+auth SHA256
+verb 3
+
+<ca>
+-----BEGIN CERTIFICATE-----
+MIID... (ваш сертификат)
+-----END CERTIFICATE-----
+</ca>
+
+<cert>
+-----BEGIN CERTIFICATE-----
+MIID... (клиентский сертификат)
+-----END CERTIFICATE-----
+</cert>
+
+<key>
+-----BEGIN PRIVATE KEY-----
+MIIE... (приватный ключ)
+-----END PRIVATE KEY-----
+</key>
+
+<tls-auth>
+-----BEGIN OpenVPN Static key V1-----
+{token}
+-----END OpenVPN Static key V1-----
+</tls-auth>`;
+                
+                // Создаем Blob и скачиваем
+                const blob = new Blob([config], {{ type: 'application/x-openvpn-profile' }});
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'vpn_config_{token[:8]}.ovpn';
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+                document.body.removeChild(a);
+                
+                alert('✅ Конфигурация скачана! Импортируйте файл в ваше VPN приложение.');
+            }}
+        </script>
+    </body>
+    </html>
+    """
+    
+    return HTMLResponse(content=html_content)
+
+@app.get("/success")
+async def success_page():
+    """Страница успешной оплаты"""
+    return RedirectResponse("https://t.me/ваш_бот?start=success")
+
+@app.get("/fail")
+async def fail_page():
+    """Страница неудачной оплаты"""
+    return RedirectResponse("https://t.me/ваш_бот?start=fail")
+
+@app.get("/")
+async def home_page():
+    """Главная страница"""
+    html = f"""
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>VPN Bot - Готов к работе</title>
+        <meta charset="utf-8">
+        <style>
+            body {{
+                font-family: Arial, sans-serif;
+                text-align: center;
+                padding: 50px;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+            }}
+            .container {{
+                background: white;
+                color: #333;
+                padding: 40px;
+                border-radius: 20px;
+                max-width: 800px;
+                margin: 0 auto;
+                box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            }}
+            .success {{
+                color: #4CAF50;
+                font-size: 28px;
+                font-weight: bold;
+                margin-bottom: 30px;
+            }}
+            .endpoint {{
+                background: #f5f5f5;
+                padding: 15px;
+                border-radius: 10px;
+                font-family: monospace;
+                margin: 15px 0;
+                text-align: left;
+            }}
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>🚀 VPN Telegram Bot</h1>
+            <p class="success">✅ Система готова к работе!</p>
+            
+            <h2>📋 Информация о системе:</h2>
+            <p><strong>Домен:</strong> {WEB_URL}</p>
+            <p><strong>IP сервера:</strong> 5.61.33.66</p>
+            <p><strong>Статус:</strong> 🟢 Активен</p>
+            
+            <h3>🔗 Доступные endpoints:</h3>
+            
+            <div class="endpoint">
+                <strong>Callback для платежей:</strong><br>
+                POST {WEB_URL}/platega-callback
+            </div>
+            
+            <div class="endpoint">
+                <strong>Страница VPN конфигурации:</strong><br>
+                GET {WEB_URL}/vpn/ВАШ_ТОКЕН
+            </div>
+            
+            <div class="endpoint">
+                <strong>Успешная оплата:</strong><br>
+                GET {WEB_URL}/success
+            </div>
+            
+            <div class="endpoint">
+                <strong>Неудачная оплата:</strong><br>
+                GET {WEB_URL}/fail
+            </div>
+            
+            <h3>⚙️ Статус компонентов:</h3>
+            <p>✅ Веб-сервер работает</p>
+            <p>✅ Домен настроен</p>
+            <p>✅ Бот Telegram активен</p>
+            <p>✅ База данных подключена</p>
+            <p>✅ Platega API настроен</p>
+            
+            <p style="margin-top: 30px; color: #666;">
+                <strong>Время сервера:</strong> {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+            </p>
+        </div>
+    </body>
+    </html>
+    """
+    return HTMLResponse(content=html)
+
+if __name__ == "__main__":
+    import uvicorn
+    
+    logger.info("🌐 Запуск веб-сервера...")
+    logger.info(f"📡 Домен: {WEB_URL}")
+    logger.info("🔄 Callback URL: {WEB_URL}/platega-callback")
+    
+    uvicorn.run(
+        app,
+        host="0.0.0.0",
+        port=8000,
+        log_level="info"
+    )

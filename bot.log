@@ -1,0 +1,113 @@
+2025-12-17 11:32:18,388 - __main__ - INFO - 🚀 Бот запускается...
+2025-12-17 11:32:18,389 - __main__ - INFO - Токен: 8588075878...
+2025-12-17 11:32:18,391 - aiogram.dispatcher - INFO - Start polling
+2025-12-17 11:32:21,454 - aiogram.dispatcher - INFO - Run polling for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
+2025-12-17 11:32:21,609 - aiogram.event - INFO - Update id=340380994 is handled. Duration 125 ms by bot id=8588075878
+2025-12-17 11:32:58,213 - aiogram.event - INFO - Update id=340380995 is handled. Duration 57 ms by bot id=8588075878
+2025-12-17 11:38:50,837 - aiogram.dispatcher - WARNING - Received SIGINT signal
+2025-12-17 11:38:50,839 - aiogram.dispatcher - INFO - Polling stopped for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
+2025-12-17 11:38:50,840 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-17 11:42:05,489 - __main__ - INFO - ✅ База данных инициализирована
+2025-12-17 11:42:05,493 - __main__ - INFO - 🚀 Запуск VPN бота...
+2025-12-17 11:42:05,494 - __main__ - INFO - Цена: 100 руб.
+2025-12-17 11:42:05,494 - __main__ - INFO - Домен: https://secureprodaww.ru
+2025-12-17 11:42:05,494 - __main__ - INFO - Platega API: Настроен
+2025-12-17 11:42:05,496 - aiogram.dispatcher - INFO - Start polling
+2025-12-17 11:42:05,572 - aiogram.dispatcher - INFO - Run polling for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
+2025-12-17 11:42:35,181 - aiogram.event - INFO - Update id=340380996 is handled. Duration 190 ms by bot id=8588075878
+2025-12-17 11:42:45,772 - __main__ - ERROR - ❌ Ошибка создания платежа: Cannot connect to host api.platega.io:443 ssl:default [Name or service not known]
+2025-12-17 11:42:45,832 - aiogram.event - INFO - Update id=340380997 is handled. Duration 182 ms by bot id=8588075878
+2025-12-17 11:45:36,782 - aiogram.dispatcher - WARNING - Received SIGINT signal
+2025-12-17 11:45:36,784 - aiogram.dispatcher - INFO - Polling stopped for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
+2025-12-17 11:45:36,785 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-17 11:57:12,467 - __main__ - INFO - ✅ База данных инициализирована
+2025-12-17 11:57:12,470 - __main__ - INFO - 🚀 Запуск VPN бота...
+2025-12-17 11:57:12,470 - __main__ - INFO - Цена: 100 руб.
+2025-12-17 11:57:12,470 - __main__ - INFO - Домен: https://secureprodaww.ru
+2025-12-17 11:57:12,471 - __main__ - INFO - Platega API: Настроен
+2025-12-17 11:57:12,471 - aiogram.dispatcher - INFO - Start polling
+2025-12-17 11:57:12,534 - aiogram.dispatcher - INFO - Run polling for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
+2025-12-17 11:58:03,038 - aiogram.dispatcher - WARNING - Received SIGINT signal
+2025-12-17 11:58:03,040 - aiogram.dispatcher - INFO - Polling stopped for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
+2025-12-17 11:58:03,040 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-17 12:02:31,118 - __main__ - INFO - ✅ База данных инициализирована
+2025-12-17 12:02:31,120 - __main__ - INFO - 🚀 Запуск VPN бота...
+2025-12-17 12:02:31,121 - __main__ - INFO - Цена: 100 руб.
+2025-12-17 12:02:31,121 - __main__ - INFO - Домен: https://secureprodaww.ru
+2025-12-17 12:02:31,121 - __main__ - INFO - Platega API: Настроен
+2025-12-17 12:02:31,122 - aiogram.dispatcher - INFO - Start polling
+2025-12-17 12:02:31,192 - aiogram.dispatcher - INFO - Run polling for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
+2025-12-17 12:09:02,617 - aiogram.dispatcher - WARNING - Received SIGINT signal
+2025-12-17 12:09:02,620 - aiogram.dispatcher - INFO - Polling stopped for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
+2025-12-17 12:09:02,621 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-17 12:09:26,646 - __main__ - INFO - ✅ База данных инициализирована
+2025-12-17 12:09:26,649 - __main__ - INFO - 🚀 Запуск VPN бота...
+2025-12-17 12:09:26,650 - __main__ - INFO - Цена: 100 руб.
+2025-12-17 12:09:26,650 - __main__ - INFO - Домен: https://secureprodaww.ru
+2025-12-17 12:09:26,651 - __main__ - INFO - Platega API: Настроен
+2025-12-17 12:09:26,651 - aiogram.dispatcher - INFO - Start polling
+2025-12-17 12:09:26,722 - aiogram.dispatcher - INFO - Run polling for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
+2025-12-17 12:09:42,722 - aiogram.event - INFO - Update id=340380998 is handled. Duration 91 ms by bot id=8588075878
+2025-12-17 12:09:44,634 - __main__ - ERROR - ❌ Ошибка создания платежа: Cannot connect to host api.platega.io:443 ssl:default [Name or service not known]
+2025-12-17 12:09:44,724 - aiogram.event - INFO - Update id=340380999 is handled. Duration 224 ms by bot id=8588075878
+2025-12-17 12:09:50,131 - aiogram.event - INFO - Update id=340381000 is handled. Duration 259 ms by bot id=8588075878
+2025-12-17 12:09:53,699 - aiogram.event - INFO - Update id=340381001 is handled. Duration 64 ms by bot id=8588075878
+2025-12-17 12:10:06,343 - aiogram.dispatcher - WARNING - Received SIGINT signal
+2025-12-17 12:10:06,345 - aiogram.dispatcher - INFO - Polling stopped for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
+2025-12-17 12:10:06,345 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-17 12:13:35,066 - __main__ - INFO - ✅ База данных инициализирована
+2025-12-17 12:13:35,069 - __main__ - INFO - 🚀 Запуск VPN бота...
+2025-12-17 12:13:35,070 - __main__ - INFO - Цена: 100 руб.
+2025-12-17 12:13:35,070 - __main__ - INFO - Домен: https://secureprodaww.ru
+2025-12-17 12:13:35,070 - __main__ - INFO - Platega API: Настроен
+2025-12-17 12:13:35,071 - aiogram.dispatcher - INFO - Start polling
+2025-12-17 12:13:35,163 - aiogram.dispatcher - INFO - Run polling for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
+2025-12-17 12:13:50,801 - aiogram.event - INFO - Update id=340381002 is handled. Duration 123 ms by bot id=8588075878
+2025-12-17 12:13:52,730 - __main__ - ERROR - ❌ Ошибка создания платежа: Cannot connect to host api.platega.io:443 ssl:default [Name or service not known]
+2025-12-17 12:13:52,930 - aiogram.event - INFO - Update id=340381003 is handled. Duration 451 ms by bot id=8588075878
+2025-12-17 12:17:50,536 - aiogram.dispatcher - WARNING - Received SIGINT signal
+2025-12-17 12:17:50,537 - aiogram.dispatcher - INFO - Polling stopped for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
+2025-12-17 12:17:50,538 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-17 12:22:12,895 - __main__ - INFO - ✅ База данных инициализирована
+2025-12-17 12:22:12,897 - __main__ - INFO - 🚀 Запуск VPN бота...
+2025-12-17 12:22:12,898 - __main__ - INFO - Цена: 100 руб.
+2025-12-17 12:22:12,899 - __main__ - INFO - Домен: https://secureprodaww.ru
+2025-12-17 12:22:12,899 - __main__ - INFO - Platega API: Настроен
+2025-12-17 12:22:12,900 - aiogram.dispatcher - INFO - Start polling
+2025-12-17 12:22:12,958 - aiogram.dispatcher - INFO - Run polling for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
+2025-12-17 12:22:33,736 - aiogram.event - INFO - Update id=340381004 is handled. Duration 104 ms by bot id=8588075878
+2025-12-17 12:22:35,457 - __main__ - ERROR - ❌ Ошибка API Platega. Статус: 404
+2025-12-17 12:22:35,458 - __main__ - ERROR - Ответ: 
+2025-12-17 12:22:35,516 - aiogram.event - INFO - Update id=340381005 is handled. Duration 283 ms by bot id=8588075878
+2025-12-17 12:22:50,239 - aiogram.dispatcher - WARNING - Received SIGINT signal
+2025-12-17 12:22:50,240 - aiogram.dispatcher - INFO - Polling stopped for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
+2025-12-17 12:22:50,241 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-17 12:32:14,133 - __main__ - INFO - ✅ База данных инициализирована
+2025-12-17 12:32:14,136 - __main__ - INFO - 🚀 Запуск VPN бота...
+2025-12-17 12:32:14,136 - __main__ - INFO - Цена: 100 руб.
+2025-12-17 12:32:14,137 - __main__ - INFO - Домен: https://secureprodaww.ru
+2025-12-17 12:32:14,137 - __main__ - INFO - Platega API: Настроен
+2025-12-17 12:32:14,138 - aiogram.dispatcher - INFO - Start polling
+2025-12-17 12:32:14,213 - aiogram.dispatcher - INFO - Run polling for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
+2025-12-17 12:32:34,785 - aiogram.event - INFO - Update id=340381006 is handled. Duration 140 ms by bot id=8588075878
+2025-12-17 12:32:36,732 - __main__ - ERROR - ❌ Ошибка API Platega. Статус: 404
+2025-12-17 12:32:36,733 - __main__ - ERROR - Ответ: 
+2025-12-17 12:32:37,114 - aiogram.event - INFO - Update id=340381007 is handled. Duration 785 ms by bot id=8588075878
+2025-12-17 12:32:49,743 - aiogram.dispatcher - WARNING - Received SIGINT signal
+2025-12-17 12:32:49,744 - aiogram.dispatcher - INFO - Polling stopped for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
+2025-12-17 12:32:49,745 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-17 12:39:58,840 - __main__ - INFO - ✅ База данных инициализирована
+2025-12-17 12:39:58,844 - __main__ - INFO - 🚀 Запуск VPN бота...
+2025-12-17 12:39:58,845 - __main__ - INFO - Цена: 100 руб.
+2025-12-17 12:39:58,845 - __main__ - INFO - Домен: https://secureprodaww.ru
+2025-12-17 12:39:58,846 - __main__ - INFO - Platega API: Настроен
+2025-12-17 12:39:58,847 - aiogram.dispatcher - INFO - Start polling
+2025-12-17 12:39:58,913 - aiogram.dispatcher - INFO - Run polling for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
+2025-12-17 12:40:14,844 - aiogram.event - INFO - Update id=340381008 is handled. Duration 115 ms by bot id=8588075878
+2025-12-17 12:40:16,955 - __main__ - INFO - Ответ от Platega (статус 200): {"paymentMethod":"SBPQR","transactionId":"018e2402-11e5-4541-991a-9b3b669bb08b","redirect":"https://pay.platega.io?id=018e2402-11e5-4541-991a-9b3b669bb08b&mh=dc78266f-4a4b-4875-aa31-0be238936913","return":"https://secureprodaww.ru/success","paymentDetails":"100.0 RUB","status":"PENDING","expiresIn":"00:29:29","merchantId":"dc78266f-4a4b-4875-aa31-0be238936913","usdtRate":84.5,"cryptoAmount":0}
+2025-12-17 12:40:16,955 - __main__ - INFO - ✅ Платеж создан. Ссылка: https://pay.platega.io?id=018e2402-11e5-4541-991a-9b3b669bb08b&mh=dc78266f-4a4b-4875-aa31-0be238936913
+2025-12-17 12:40:17,028 - aiogram.event - INFO - Update id=340381009 is handled. Duration 828 ms by bot id=8588075878
+2025-12-17 12:44:03,713 - aiogram.event - INFO - Update id=340381010 is handled. Duration 114 ms by bot id=8588075878
+2025-12-17 12:44:14,365 - aiogram.dispatcher - WARNING - Received SIGINT signal
+2025-12-17 12:44:14,371 - aiogram.dispatcher - INFO - Polling stopped for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
+2025-12-17 12:44:14,371 - aiogram.dispatcher - INFO - Polling stopped
