@@ -191,6 +191,25 @@ class PlategaAPI:
 
 platega = PlategaAPI()
 
+
+        async def check_payment_status(self, transaction_id: str):
+            """Проверяет статус платежа в Platega по transactionId."""
+            url = f"{self.base_url}/transaction/{transaction_id}"
+
+            try:
+                async with aiohttp.ClientSession() as session:
+                    async with session.get(url, headers=self.headers, timeout=10) as response:
+                        if response.status == 200:
+                            result = await response.json()
+                            logger.info(f"Статус транзакции {transaction_id}: {result.get('status')}")
+                            return result
+                        else:
+                            logger.error(f"Ошибка при проверке статуса. Код: {response.status}")
+                            logger.error(await response.text())
+            except Exception as e:
+                logger.error(f"Ошибка сети при проверке статуса: {e}")
+            return None
+
 # ===== ОБРАБОТЧИКИ КОМАНД =====
 @dp.message(Command("start"))
 async def cmd_start(message: types.Message):
