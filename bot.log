@@ -331,3 +331,9 @@ aiogram.exceptions.TelegramBadRequest: Telegram server says - Bad Request: inlin
 2025-12-17 16:03:37,476 - aiogram.event - INFO - Update id=340381044 is not handled. Duration 1 ms by bot id=8588075878
 2025-12-17 16:03:55,595 - aiogram.event - INFO - Update id=340381045 is not handled. Duration 0 ms by bot id=8588075878
 2025-12-17 16:06:38,996 - aiogram.event - INFO - Update id=340381046 is handled. Duration 57 ms by bot id=8588075878
+2025-12-17 17:28:24,061 - aiogram.event - INFO - Update id=340381047 is handled. Duration 140 ms by bot id=8588075878
+2025-12-17 17:28:26,471 - __main__ - INFO - Ответ от Platega (статус 200): {"paymentMethod":"SBPQR","transactionId":"6985c39d-2ad1-4f42-96e5-2f4185033530","redirect":"https://pay.platega.io?id=6985c39d-2ad1-4f42-96e5-2f4185033530&mh=dc78266f-4a4b-4875-aa31-0be238936913","return":"https://secureprodaww.ru/success","paymentDetails":"10.0 RUB","status":"PENDING","expiresIn":"00:29:29","merchantId":"dc78266f-4a4b-4875-aa31-0be238936913","usdtRate":84.5,"cryptoAmount":0}
+2025-12-17 17:28:26,476 - __main__ - INFO - ✅ Платеж создан. Ссылка: https://pay.platega.io?id=6985c39d-2ad1-4f42-96e5-2f4185033530&mh=dc78266f-4a4b-4875-aa31-0be238936913
+2025-12-17 17:28:26,579 - aiogram.event - INFO - Update id=340381048 is handled. Duration 735 ms by bot id=8588075878
+2025-12-17 17:28:29,281 - aiogram.event - INFO - Update id=340381049 is handled. Duration 87 ms by bot id=8588075878
+2025-12-17 17:28:46,068 - aiogram.event - INFO - Update id=340381050 is handled. Duration 114 ms by bot id=8588075878

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Secure VPN — Безопасный интернет без границ{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header class="header">
+        <div class="container header__container">
+            <a href="/" class="logo">🔐 Secure VPN</a>
+            <nav class="nav">
+                <a href="/" class="nav__link">Главная</a>
+                <a href="/privacy" class="nav__link">Конфиденциальность</a>
+                <a href="/terms" class="nav__link">Соглашение</a>
+                <a href="https://t.me/sequrevpnbot" class="button button--primary" target="_blank">Начать в боте</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 <strong>Secure VPN</strong>. Все права защищены.</p>
+            <p>Используя сервис, вы соглашаетесь с <a href="/terms">Пользовательским соглашением</a> и <a href="/privacy">Политикой конфиденциальности</a>.</p>
+            <p>Поддержка: <a href="https://t.me/ваш_контакт" target="_blank">@sequrevpn_help</a></p>
+        </div>
+    </footer>
+</body>
+</html>

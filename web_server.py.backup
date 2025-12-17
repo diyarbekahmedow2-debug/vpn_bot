@@ -1,3 +1,8 @@
+# Создайте резервную копию текущего файла
+cp web_server.py web_server.py.backup
+
+# Создайте новый правильный файл
+cat > web_server.py << 'EOF'
 #!/usr/bin/env python3
 """
 Веб-сервер для обработки callback от Platega и выдачи VPN
@@ -371,3 +376,4 @@ if __name__ == "__main__":
         port=8000,
         log_level="info"
     )
+EOF
