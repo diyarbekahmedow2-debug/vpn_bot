@@ -1,4 +1,4 @@
-#!/root/vpnbot/venv/bin/python3
+#!/root/vpn_bot/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

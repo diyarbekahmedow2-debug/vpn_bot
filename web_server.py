@@ -160,7 +160,7 @@ async def vpn_config_page(token: str):
     <html>
     <head>
         <meta charset="UTF-8">
-        <title>VPN Конфигурация</title>
+        <title>VPNhdh Конфигурация</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
             * {{

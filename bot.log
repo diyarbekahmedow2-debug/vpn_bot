@@ -457,3 +457,182 @@ aiogram.exceptions.TelegramBadRequest: Telegram server says - Bad Request: inlin
 2025-12-17 20:49:53,179 - __main__ - INFO - Ответ от Platega (статус 200): {"paymentMethod":"SBPQR","transactionId":"510a96d1-4a8c-4a83-8c01-b4e4c87a6fb4","redirect":"https://pay.platega.io?id=510a96d1-4a8c-4a83-8c01-b4e4c87a6fb4&mh=dc78266f-4a4b-4875-aa31-0be238936913","return":"https://secureprodaww.ru/success","paymentDetails":"150.0 RUB","status":"PENDING","expiresIn":"00:29:29","merchantId":"dc78266f-4a4b-4875-aa31-0be238936913","usdtRate":85.09,"cryptoAmount":0}
 2025-12-17 20:49:53,180 - __main__ - INFO - ✅ Платеж создан. Ссылка: https://pay.platega.io?id=510a96d1-4a8c-4a83-8c01-b4e4c87a6fb4&mh=dc78266f-4a4b-4875-aa31-0be238936913
 2025-12-17 20:49:53,238 - aiogram.event - INFO - Update id=340381111 is handled. Duration 609 ms by bot id=8588075878
+2025-12-19 19:58:43,789 - __main__ - INFO - ✅ База данных инициализирована
+2025-12-19 19:58:43,794 - __main__ - INFO - ✅ База данных инициализирована
+2025-12-19 19:58:43,795 - __main__ - INFO - 🚀 Запуск VPN бота...
+2025-12-19 19:58:43,796 - __main__ - INFO - Цена: 150 руб.
+2025-12-19 19:58:43,796 - __main__ - INFO - Домен: https://secureprodaww.ru
+2025-12-19 19:58:43,797 - __main__ - INFO - Platega API: Настроен
+2025-12-19 19:58:43,875 - aiogram.dispatcher - INFO - Start polling
+2025-12-19 19:58:43,894 - aiogram.dispatcher - INFO - Run polling for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
+2025-12-19 19:58:48,889 - aiogram.event - INFO - Update id=340381425 is handled. Duration 151 ms by bot id=8588075878
+2025-12-19 19:58:52,663 - __main__ - INFO - Ответ от Platega (статус 200): {"paymentMethod":"SBPQR","transactionId":"264293ee-f66f-48da-ad49-b4fa33a5e17e","redirect":"https://pay.platega.io?id=264293ee-f66f-48da-ad49-b4fa33a5e17e&mh=dc78266f-4a4b-4875-aa31-0be238936913","return":"https://secureprodaww.ru/success","paymentDetails":"150.0 RUB","status":"PENDING","expiresIn":"00:29:29","merchantId":"dc78266f-4a4b-4875-aa31-0be238936913","usdtRate":85.29,"cryptoAmount":0}
+2025-12-19 19:58:52,664 - __main__ - INFO - ✅ Платеж создан. Ссылка: https://pay.platega.io?id=264293ee-f66f-48da-ad49-b4fa33a5e17e&mh=dc78266f-4a4b-4875-aa31-0be238936913
+2025-12-19 19:58:52,722 - aiogram.event - INFO - Update id=340381426 is handled. Duration 954 ms by bot id=8588075878
+2025-12-19 19:59:51,786 - aiogram.event - INFO - Update id=340381427 is handled. Duration 39 ms by bot id=8588075878
+2025-12-19 20:00:00,421 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-19 20:00:00,437 - aiogram.dispatcher - INFO - Polling stopped for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
+2025-12-19 20:00:00,438 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-19 20:00:10,384 - __main__ - INFO - ✅ База данных инициализирована
+2025-12-19 20:00:10,388 - __main__ - INFO - ✅ База данных инициализирована
+2025-12-19 20:00:10,388 - __main__ - INFO - 🚀 Запуск VPN бота...
+2025-12-19 20:00:10,389 - __main__ - INFO - Цена: 10 руб.
+2025-12-19 20:00:10,389 - __main__ - INFO - Домен: https://secureprodaww.ru
+2025-12-19 20:00:10,389 - __main__ - INFO - Platega API: Настроен
+2025-12-19 20:00:10,473 - aiogram.dispatcher - INFO - Start polling
+2025-12-19 20:00:10,505 - aiogram.dispatcher - INFO - Run polling for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
+2025-12-19 20:00:19,995 - aiogram.event - INFO - Update id=340381429 is handled. Duration 126 ms by bot id=8588075878
+2025-12-19 20:00:22,292 - aiogram.event - INFO - Update id=340381430 is handled. Duration 62 ms by bot id=8588075878
+2025-12-19 20:00:26,251 - __main__ - INFO - Ответ от Platega (статус 200): {"paymentMethod":"SBPQR","transactionId":"1fa3c92b-a090-4476-b1f0-021cfa3a8307","redirect":"https://pay.platega.io?id=1fa3c92b-a090-4476-b1f0-021cfa3a8307&mh=dc78266f-4a4b-4875-aa31-0be238936913","return":"https://secureprodaww.ru/success","paymentDetails":"10.0 RUB","status":"PENDING","expiresIn":"00:29:29","merchantId":"dc78266f-4a4b-4875-aa31-0be238936913","usdtRate":85.29,"cryptoAmount":0}
+2025-12-19 20:00:26,252 - __main__ - INFO - ✅ Платеж создан. Ссылка: https://pay.platega.io?id=1fa3c92b-a090-4476-b1f0-021cfa3a8307&mh=dc78266f-4a4b-4875-aa31-0be238936913
+2025-12-19 20:00:26,316 - aiogram.event - INFO - Update id=340381431 is handled. Duration 1023 ms by bot id=8588075878
+2025-12-19 20:01:17,348 - aiogram.event - INFO - Update id=340381432 is handled. Duration 336 ms by bot id=8588075878
+2025-12-19 20:06:35,692 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-19 20:06:35,704 - aiogram.dispatcher - INFO - Polling stopped for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
+2025-12-19 20:06:35,710 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-19 20:06:45,034 - __main__ - INFO - ✅ База данных инициализирована
+2025-12-19 20:06:45,037 - __main__ - INFO - ✅ База данных инициализирована
+2025-12-19 20:06:45,049 - __main__ - INFO - 🚀 Запуск VPN бота...
+2025-12-19 20:06:45,050 - __main__ - INFO - Цена: 10 руб.
+2025-12-19 20:06:45,050 - __main__ - INFO - Домен: https://secureprodaww.ru
+2025-12-19 20:06:45,050 - __main__ - INFO - Platega API: Настроен
+2025-12-19 20:06:45,153 - aiogram.dispatcher - INFO - Start polling
+2025-12-19 20:06:45,168 - aiogram.dispatcher - INFO - Run polling for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
+2025-12-19 20:09:24,138 - aiogram.event - INFO - Update id=340381433 is handled. Duration 150 ms by bot id=8588075878
+2025-12-19 20:09:49,933 - aiogram.event - INFO - Update id=340381434 is handled. Duration 44 ms by bot id=8588075878
+2025-12-19 20:09:52,523 - __main__ - INFO - Ответ от Platega (статус 200): {"paymentMethod":"SBPQR","transactionId":"9d8fd547-3f94-4ed9-adbf-d6a9132c9858","redirect":"https://pay.platega.io?id=9d8fd547-3f94-4ed9-adbf-d6a9132c9858&mh=dc78266f-4a4b-4875-aa31-0be238936913","return":"https://secureprodaww.ru/success","paymentDetails":"10.0 RUB","status":"PENDING","expiresIn":"00:29:29","merchantId":"dc78266f-4a4b-4875-aa31-0be238936913","usdtRate":85.29,"cryptoAmount":0}
+2025-12-19 20:09:52,524 - __main__ - INFO - ✅ Платеж создан. Ссылка: https://pay.platega.io?id=9d8fd547-3f94-4ed9-adbf-d6a9132c9858&mh=dc78266f-4a4b-4875-aa31-0be238936913
+2025-12-19 20:09:52,602 - aiogram.event - INFO - Update id=340381435 is handled. Duration 853 ms by bot id=8588075878
+2025-12-19 20:10:40,590 - aiogram.event - INFO - Update id=340381436 is handled. Duration 61 ms by bot id=8588075878
+2025-12-19 20:12:55,631 - aiogram.event - INFO - Update id=340381437 is handled. Duration 309 ms by bot id=8588075878
+2025-12-19 20:12:58,966 - aiogram.event - INFO - Update id=340381438 is handled. Duration 80 ms by bot id=8588075878
+2025-12-19 20:16:08,200 - aiogram.event - INFO - Update id=340381439 is handled. Duration 57 ms by bot id=8588075878
+2025-12-19 20:19:33,498 - aiogram.event - INFO - Update id=340381440 is handled. Duration 125 ms by bot id=8588075878
+2025-12-19 20:24:11,928 - aiogram.event - INFO - Update id=340381441 is handled. Duration 69 ms by bot id=8588075878
+2025-12-19 20:24:14,723 - __main__ - INFO - Ответ от Platega (статус 200): {"paymentMethod":"SBPQR","transactionId":"850f2a70-50a6-467c-9230-fb2a78d93e90","redirect":"https://pay.platega.io?id=850f2a70-50a6-467c-9230-fb2a78d93e90&mh=dc78266f-4a4b-4875-aa31-0be238936913","return":"https://secureprodaww.ru/success","paymentDetails":"10.0 RUB","status":"PENDING","expiresIn":"00:29:29","merchantId":"dc78266f-4a4b-4875-aa31-0be238936913","usdtRate":85.29,"cryptoAmount":0}
+2025-12-19 20:24:14,724 - __main__ - INFO - ✅ Платеж создан. Ссылка: https://pay.platega.io?id=850f2a70-50a6-467c-9230-fb2a78d93e90&mh=dc78266f-4a4b-4875-aa31-0be238936913
+2025-12-19 20:24:14,783 - aiogram.event - INFO - Update id=340381442 is handled. Duration 1540 ms by bot id=8588075878
+2025-12-19 20:24:39,607 - aiogram.event - INFO - Update id=340381443 is handled. Duration 45 ms by bot id=8588075878
+2025-12-19 20:24:54,776 - aiogram.event - INFO - Update id=340381444 is handled. Duration 32 ms by bot id=8588075878
+2025-12-19 20:24:56,352 - aiogram.event - INFO - Update id=340381445 is handled. Duration 34 ms by bot id=8588075878
+2025-12-19 20:25:00,586 - aiogram.event - INFO - Update id=340381446 is handled. Duration 61 ms by bot id=8588075878
+2025-12-19 20:27:02,984 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-19 20:27:02,992 - aiogram.dispatcher - INFO - Polling stopped for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
+2025-12-19 20:27:02,993 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-19 20:27:11,701 - __main__ - INFO - ✅ База данных инициализирована
+2025-12-19 20:27:11,704 - __main__ - INFO - ✅ База данных инициализирована
+2025-12-19 20:27:11,704 - __main__ - INFO - 🚀 Запуск VPN бота...
+2025-12-19 20:27:11,704 - __main__ - INFO - Цена: 150 руб.
+2025-12-19 20:27:11,705 - __main__ - INFO - Домен: https://secureprodaww.ru
+2025-12-19 20:27:11,705 - __main__ - INFO - Platega API: Настроен
+2025-12-19 20:27:11,759 - aiogram.dispatcher - INFO - Start polling
+2025-12-19 20:27:11,774 - aiogram.dispatcher - INFO - Run polling for bot @sequrevpnbot id=8588075878 - 'Secure VPN'
+2025-12-19 20:27:38,801 - aiogram.event - INFO - Update id=340381447 is handled. Duration 92 ms by bot id=8588075878
+2025-12-20 05:15:44,903 - __main__ - INFO - Ответ от Platega (статус 200): {"paymentMethod":"SBPQR","transactionId":"70aaed33-4300-4b62-b4a6-4315476387bc","redirect":"https://pay.platega.io?id=70aaed33-4300-4b62-b4a6-4315476387bc&mh=dc78266f-4a4b-4875-aa31-0be238936913","return":"https://secureprodaww.ru/success","paymentDetails":"150.0 RUB","status":"PENDING","expiresIn":"00:29:29","merchantId":"dc78266f-4a4b-4875-aa31-0be238936913","usdtRate":85.29,"cryptoAmount":0}
+2025-12-20 05:15:44,904 - __main__ - INFO - ✅ Платеж создан. Ссылка: https://pay.platega.io?id=70aaed33-4300-4b62-b4a6-4315476387bc&mh=dc78266f-4a4b-4875-aa31-0be238936913
+2025-12-20 05:15:44,969 - aiogram.event - INFO - Update id=340381448 is handled. Duration 707 ms by bot id=8588075878
+2025-12-20 08:59:26,893 - aiogram.event - INFO - Update id=340381449 is handled. Duration 106 ms by bot id=8588075878
+2025-12-20 08:59:31,426 - __main__ - INFO - Ответ от Platega (статус 200): {"paymentMethod":"SBPQR","transactionId":"2f4b51a5-1c18-4839-a1b2-432726167a87","redirect":"https://pay.platega.io?id=2f4b51a5-1c18-4839-a1b2-432726167a87&mh=dc78266f-4a4b-4875-aa31-0be238936913","return":"https://secureprodaww.ru/success","paymentDetails":"150.0 RUB","status":"PENDING","expiresIn":"00:29:29","merchantId":"dc78266f-4a4b-4875-aa31-0be238936913","usdtRate":85.29,"cryptoAmount":0}
+2025-12-20 08:59:31,427 - __main__ - INFO - ✅ Платеж создан. Ссылка: https://pay.platega.io?id=2f4b51a5-1c18-4839-a1b2-432726167a87&mh=dc78266f-4a4b-4875-aa31-0be238936913
+2025-12-20 08:59:31,484 - aiogram.event - INFO - Update id=340381450 is handled. Duration 889 ms by bot id=8588075878
+2025-12-20 08:59:37,628 - aiogram.event - INFO - Update id=340381451 is handled. Duration 72 ms by bot id=8588075878
+2025-12-20 10:13:22,324 - __main__ - INFO - Ответ от Platega (статус 200): {"paymentMethod":"SBPQR","transactionId":"f7f201de-0d61-4d46-8e65-032e79fdf2b0","redirect":"https://pay.platega.io?id=f7f201de-0d61-4d46-8e65-032e79fdf2b0&mh=dc78266f-4a4b-4875-aa31-0be238936913","return":"https://secureprodaww.ru/success","paymentDetails":"150.0 RUB","status":"PENDING","expiresIn":"00:29:29","merchantId":"dc78266f-4a4b-4875-aa31-0be238936913","usdtRate":85.29,"cryptoAmount":0}
+2025-12-20 10:13:22,326 - __main__ - INFO - ✅ Платеж создан. Ссылка: https://pay.platega.io?id=f7f201de-0d61-4d46-8e65-032e79fdf2b0&mh=dc78266f-4a4b-4875-aa31-0be238936913
+2025-12-20 10:13:22,539 - aiogram.event - INFO - Update id=340381452 is handled. Duration 1373 ms by bot id=8588075878
+2025-12-21 01:14:09,783 - __main__ - INFO - Ответ от Platega (статус 200): {"paymentMethod":"SBPQR","transactionId":"d0c40756-ed34-48cd-84a2-28b5a8afabf7","redirect":"https://pay.platega.io?id=d0c40756-ed34-48cd-84a2-28b5a8afabf7&mh=dc78266f-4a4b-4875-aa31-0be238936913","return":"https://secureprodaww.ru/success","paymentDetails":"150.0 RUB","status":"PENDING","expiresIn":"00:29:29","merchantId":"dc78266f-4a4b-4875-aa31-0be238936913","usdtRate":85.29,"cryptoAmount":0}
+2025-12-21 01:14:09,785 - __main__ - INFO - ✅ Платеж создан. Ссылка: https://pay.platega.io?id=d0c40756-ed34-48cd-84a2-28b5a8afabf7&mh=dc78266f-4a4b-4875-aa31-0be238936913
+2025-12-21 01:14:09,839 - aiogram.event - INFO - Update id=340381453 is handled. Duration 682 ms by bot id=8588075878
+2025-12-21 20:30:59,491 - aiogram.event - INFO - Update id=340381454 is handled. Duration 110 ms by bot id=8588075878
+2025-12-21 20:31:05,534 - __main__ - INFO - Ответ от Platega (статус 200): {"paymentMethod":"SBPQR","transactionId":"87c4925b-c6c9-4e74-8bd4-598c6bb6e5d8","redirect":"https://pay.platega.io?id=87c4925b-c6c9-4e74-8bd4-598c6bb6e5d8&mh=dc78266f-4a4b-4875-aa31-0be238936913","return":"https://secureprodaww.ru/success","paymentDetails":"150.0 RUB","status":"PENDING","expiresIn":"00:29:29","merchantId":"dc78266f-4a4b-4875-aa31-0be238936913","usdtRate":85.29,"cryptoAmount":0}
+2025-12-21 20:31:05,535 - __main__ - INFO - ✅ Платеж создан. Ссылка: https://pay.platega.io?id=87c4925b-c6c9-4e74-8bd4-598c6bb6e5d8&mh=dc78266f-4a4b-4875-aa31-0be238936913
+2025-12-21 20:31:05,652 - aiogram.event - INFO - Update id=340381455 is handled. Duration 1124 ms by bot id=8588075878
+2025-12-21 20:31:58,529 - aiogram.event - INFO - Update id=340381456 is handled. Duration 91 ms by bot id=8588075878
+2025-12-21 20:32:00,250 - aiogram.event - INFO - Update id=340381457 is handled. Duration 25 ms by bot id=8588075878
+2025-12-21 20:32:03,431 - aiogram.event - INFO - Update id=340381458 is handled. Duration 28 ms by bot id=8588075878
+2025-12-21 20:32:05,327 - aiogram.event - INFO - Update id=340381459 is handled. Duration 37 ms by bot id=8588075878
+2025-12-21 20:32:07,194 - aiogram.event - INFO - Update id=340381460 is handled. Duration 28 ms by bot id=8588075878
+2025-12-21 20:32:08,950 - aiogram.event - INFO - Update id=340381461 is handled. Duration 68 ms by bot id=8588075878
+2025-12-21 21:07:30,442 - aiogram.event - INFO - Update id=340381462 is handled. Duration 95 ms by bot id=8588075878
+2025-12-21 21:07:34,169 - __main__ - INFO - Ответ от Platega (статус 200): {"paymentMethod":"SBPQR","transactionId":"e6de305f-a9f9-4e50-9541-a0f674de822d","redirect":"https://pay.platega.io?id=e6de305f-a9f9-4e50-9541-a0f674de822d&mh=dc78266f-4a4b-4875-aa31-0be238936913","return":"https://secureprodaww.ru/success","paymentDetails":"150.0 RUB","status":"PENDING","expiresIn":"00:29:29","merchantId":"dc78266f-4a4b-4875-aa31-0be238936913","usdtRate":85.29,"cryptoAmount":0}
+2025-12-21 21:07:34,170 - __main__ - INFO - ✅ Платеж создан. Ссылка: https://pay.platega.io?id=e6de305f-a9f9-4e50-9541-a0f674de822d&mh=dc78266f-4a4b-4875-aa31-0be238936913
+2025-12-21 21:07:34,229 - aiogram.event - INFO - Update id=340381463 is handled. Duration 901 ms by bot id=8588075878
+2025-12-21 21:08:36,597 - aiogram.event - INFO - Update id=340381464 is handled. Duration 76 ms by bot id=8588075878
+2025-12-21 21:08:44,989 - aiogram.event - INFO - Update id=340381465 is handled. Duration 63 ms by bot id=8588075878
+2025-12-21 21:13:06,028 - aiogram.event - INFO - Update id=340381466 is handled. Duration 48 ms by bot id=8588075878
+2025-12-21 21:13:10,688 - __main__ - INFO - Ответ от Platega (статус 200): {"paymentMethod":"SBPQR","transactionId":"6d3f53a0-919b-4742-8932-f67befd55256","redirect":"https://pay.platega.io?id=6d3f53a0-919b-4742-8932-f67befd55256&mh=dc78266f-4a4b-4875-aa31-0be238936913","return":"https://secureprodaww.ru/success","paymentDetails":"150.0 RUB","status":"PENDING","expiresIn":"00:29:29","merchantId":"dc78266f-4a4b-4875-aa31-0be238936913","usdtRate":85.29,"cryptoAmount":0}
+2025-12-21 21:13:10,689 - __main__ - INFO - ✅ Платеж создан. Ссылка: https://pay.platega.io?id=6d3f53a0-919b-4742-8932-f67befd55256&mh=dc78266f-4a4b-4875-aa31-0be238936913
+2025-12-21 21:13:10,751 - aiogram.event - INFO - Update id=340381467 is handled. Duration 892 ms by bot id=8588075878
+2025-12-23 17:46:57,485 - aiogram.event - INFO - Update id=340381468 is handled. Duration 132 ms by bot id=8588075878
+2025-12-24 16:34:24,331 - aiogram.event - INFO - Update id=340381469 is not handled. Duration 13 ms by bot id=8588075878
+2025-12-24 16:38:49,118 - aiogram.event - INFO - Update id=340381470 is not handled. Duration 4 ms by bot id=8588075878
+2025-12-24 16:38:52,441 - aiogram.event - INFO - Update id=340381471 is not handled. Duration 3 ms by bot id=8588075878
+2025-12-24 16:38:53,718 - aiogram.event - INFO - Update id=340381472 is not handled. Duration 2 ms by bot id=8588075878
+2025-12-24 16:39:34,124 - aiogram.event - INFO - Update id=340381473 is not handled. Duration 5 ms by bot id=8588075878
+2025-12-25 17:03:11,671 - aiogram.event - INFO - Update id=340381474 is handled. Duration 89 ms by bot id=8588075878
+2025-12-25 17:03:16,041 - aiogram.event - INFO - Update id=340381475 is handled. Duration 144 ms by bot id=8588075878
+2025-12-25 17:03:27,709 - aiogram.event - INFO - Update id=340381476 is handled. Duration 66 ms by bot id=8588075878
+2025-12-25 17:03:29,316 - aiogram.event - INFO - Update id=340381477 is handled. Duration 63 ms by bot id=8588075878
+2025-12-25 17:08:26,975 - __main__ - INFO - Ответ от Platega (статус 200): {"paymentMethod":"SBPQR","transactionId":"59469f8f-49dd-4a8d-9abd-a3b2d5fb2f7d","redirect":"https://pay.platega.io?id=59469f8f-49dd-4a8d-9abd-a3b2d5fb2f7d&mh=dc78266f-4a4b-4875-aa31-0be238936913","return":"https://secureprodaww.ru/success","paymentDetails":"150.0 RUB","status":"PENDING","expiresIn":"00:29:29","merchantId":"dc78266f-4a4b-4875-aa31-0be238936913","usdtRate":82.5,"cryptoAmount":0}
+2025-12-25 17:08:26,977 - __main__ - INFO - ✅ Платеж создан. Ссылка: https://pay.platega.io?id=59469f8f-49dd-4a8d-9abd-a3b2d5fb2f7d&mh=dc78266f-4a4b-4875-aa31-0be238936913
+2025-12-25 17:08:27,089 - aiogram.event - INFO - Update id=340381478 is handled. Duration 2290 ms by bot id=8588075878
+2025-12-26 09:14:20,510 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-12-26 09:14:20,514 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8588075878)
+2025-12-26 09:15:32,541 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-12-26 09:15:32,543 - aiogram.dispatcher - WARNING - Sleep for 1.516768 seconds and try again... (tryings = 1, bot id = 8588075878)
+2025-12-26 09:16:44,541 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-12-26 09:16:44,543 - aiogram.dispatcher - WARNING - Sleep for 2.031946 seconds and try again... (tryings = 2, bot id = 8588075878)
+2025-12-26 09:17:57,546 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-12-26 09:17:57,548 - aiogram.dispatcher - WARNING - Sleep for 2.286656 seconds and try again... (tryings = 3, bot id = 8588075878)
+2025-12-26 09:19:10,524 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-12-26 09:19:10,526 - aiogram.dispatcher - WARNING - Sleep for 3.050469 seconds and try again... (tryings = 4, bot id = 8588075878)
+2025-12-26 09:19:57,562 - aiogram.dispatcher - INFO - Connection established (tryings = 5, bot id = 8588075878)
+2025-12-26 09:45:02,528 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-12-26 09:45:02,532 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8588075878)
+2025-12-26 09:46:14,502 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-12-26 09:46:14,504 - aiogram.dispatcher - WARNING - Sleep for 1.345152 seconds and try again... (tryings = 1, bot id = 8588075878)
+2025-12-26 09:47:23,006 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2025-12-26 09:47:23,008 - aiogram.dispatcher - WARNING - Sleep for 1.633538 seconds and try again... (tryings = 2, bot id = 8588075878)
+2025-12-26 09:47:37,275 - aiogram.dispatcher - INFO - Connection established (tryings = 3, bot id = 8588075878)
+2025-12-26 09:49:39,589 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-12-26 09:49:39,591 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8588075878)
+2025-12-26 09:50:44,825 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 8588075878)
+2025-12-27 01:10:56,829 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramServerError: Telegram server says - Bad Gateway
+2025-12-27 01:10:56,837 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8588075878)
+2025-12-27 01:10:57,863 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramServerError: Telegram server says - Bad Gateway
+2025-12-27 01:10:57,864 - aiogram.dispatcher - WARNING - Sleep for 1.221737 seconds and try again... (tryings = 1, bot id = 8588075878)
+2025-12-27 01:10:59,102 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramServerError: Telegram server says - Bad Gateway
+2025-12-27 01:10:59,103 - aiogram.dispatcher - WARNING - Sleep for 1.686145 seconds and try again... (tryings = 2, bot id = 8588075878)
+2025-12-27 01:11:29,900 - aiogram.dispatcher - INFO - Connection established (tryings = 3, bot id = 8588075878)
+2025-12-27 11:30:48,536 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-12-27 11:30:48,538 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8588075878)
+2025-12-27 11:32:00,475 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-12-27 11:32:00,477 - aiogram.dispatcher - WARNING - Sleep for 1.307444 seconds and try again... (tryings = 1, bot id = 8588075878)
+2025-12-27 11:32:11,831 - aiogram.dispatcher - INFO - Connection established (tryings = 2, bot id = 8588075878)
+2025-12-28 11:09:17,537 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramServerError: Telegram server says - Bad Gateway
+2025-12-28 11:09:17,545 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8588075878)
+2025-12-28 11:09:36,159 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 8588075878)
+2025-12-28 11:10:46,494 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-12-28 11:10:46,496 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8588075878)
+2025-12-28 11:11:02,168 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 8588075878)
+2025-12-28 11:14:05,533 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-12-28 11:14:05,536 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8588075878)
+2025-12-28 11:14:33,067 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 8588075878)
+2025-12-28 11:14:49,352 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-12-28 11:14:49,354 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8588075878)
+2025-12-28 11:15:00,382 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 8588075878)
+2025-12-28 11:15:18,026 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-12-28 11:15:18,027 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8588075878)
+2025-12-28 11:15:29,063 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 8588075878)
+2025-12-28 14:37:06,995 - aiogram.event - INFO - Update id=340381479 is handled. Duration 189 ms by bot id=8588075878
+2025-12-28 14:37:14,104 - __main__ - INFO - Ответ от Platega (статус 200): {"paymentMethod":"SBPQR","transactionId":"5c0ba321-a8d7-4ff0-b333-fb0e56777766","redirect":"https://pay.platega.io?id=5c0ba321-a8d7-4ff0-b333-fb0e56777766&mh=dc78266f-4a4b-4875-aa31-0be238936913","return":"https://secureprodaww.ru/success","paymentDetails":"150.0 RUB","status":"PENDING","expiresIn":"00:29:29","merchantId":"dc78266f-4a4b-4875-aa31-0be238936913","usdtRate":82.5,"cryptoAmount":0}
+2025-12-28 14:37:14,105 - __main__ - INFO - ✅ Платеж создан. Ссылка: https://pay.platega.io?id=5c0ba321-a8d7-4ff0-b333-fb0e56777766&mh=dc78266f-4a4b-4875-aa31-0be238936913
+2025-12-28 14:37:14,416 - aiogram.event - INFO - Update id=340381480 is handled. Duration 3244 ms by bot id=8588075878
+2025-12-28 14:44:54,180 - aiogram.event - INFO - Update id=340381481 is handled. Duration 40 ms by bot id=8588075878
+2025-12-28 14:44:56,720 - aiogram.event - INFO - Update id=340381482 is handled. Duration 122 ms by bot id=8588075878
+2025-12-28 14:45:07,276 - __main__ - INFO - Ответ от Platega (статус 200): {"paymentMethod":"SBPQR","transactionId":"95022f6e-acc7-4f5a-b202-25a9aa6dffd6","redirect":"https://pay.platega.io?id=95022f6e-acc7-4f5a-b202-25a9aa6dffd6&mh=dc78266f-4a4b-4875-aa31-0be238936913","return":"https://secureprodaww.ru/success","paymentDetails":"150.0 RUB","status":"PENDING","expiresIn":"00:29:29","merchantId":"dc78266f-4a4b-4875-aa31-0be238936913","usdtRate":82.5,"cryptoAmount":0}
+2025-12-28 14:45:07,278 - __main__ - INFO - ✅ Платеж создан. Ссылка: https://pay.platega.io?id=95022f6e-acc7-4f5a-b202-25a9aa6dffd6&mh=dc78266f-4a4b-4875-aa31-0be238936913
+2025-12-28 14:45:07,452 - aiogram.event - INFO - Update id=340381483 is handled. Duration 2842 ms by bot id=8588075878
+2025-12-28 17:44:06,308 - aiogram.event - INFO - Update id=340381484 is handled. Duration 110 ms by bot id=8588075878
+2025-12-28 17:45:49,087 - __main__ - INFO - Ответ от Platega (статус 200): {"paymentMethod":"SBPQR","transactionId":"8160e14a-6094-46c3-9136-bbe1452c7923","redirect":"https://pay.platega.io?id=8160e14a-6094-46c3-9136-bbe1452c7923&mh=dc78266f-4a4b-4875-aa31-0be238936913","return":"https://secureprodaww.ru/success","paymentDetails":"150.0 RUB","status":"PENDING","expiresIn":"00:29:29","merchantId":"dc78266f-4a4b-4875-aa31-0be238936913","usdtRate":82.5,"cryptoAmount":0}
+2025-12-28 17:45:49,089 - __main__ - INFO - ✅ Платеж создан. Ссылка: https://pay.platega.io?id=8160e14a-6094-46c3-9136-bbe1452c7923&mh=dc78266f-4a4b-4875-aa31-0be238936913
+2025-12-28 17:45:49,381 - aiogram.event - INFO - Update id=340381485 is handled. Duration 2834 ms by bot id=8588075878
